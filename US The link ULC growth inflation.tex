@@ -1,0 +1,1685 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 1252
+\documentclass[11pt]{article}
+\usepackage[colorlinks,pdfpagelabels,pdfstartview=FitH,bookmarksopen=true,bookmarksnumbered=true,linkcolor=blue,plainpages=false,hypertexnames=false,citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{authblk}
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage[round]{natbib}
+\usepackage{booktabs}
+\usepackage[hmargin=1.15in,vmargin=1.15in]{geometry}
+\usepackage{setspace}
+\usepackage{chngcntr}
+\usepackage{verbatim}
+\usepackage{multirow}
+%\usepackage{appendix}
+\usepackage[title]{appendix}
+\usepackage[gen]{eurosym}
+\usepackage{comment}
+\interfootnotelinepenalty=10000
+\setcounter{MaxMatrixCols}{10}
+
+\renewcommand{\floatpagefraction}{0.85}
+\setstretch{1.25}
+%\input{tcilatex}
+\begin{document}
+%\pagenumbering{gobble}
+\pagenumbering{arabic}
+\author[1]{Elena Bobeica, Matteo Ciccarelli, Isabel Vansteenkiste}
+\affil[1]{European Central Bank}
+\title{The link between labor cost and price inflation in the US\thanks{
+\vspace{-1ex} \textit{We would like to thank Gonzalo Castex, Jordi Gali, Giorgio Primiceri, Juan Rubio-Ramirez, Frank Smets, Thomas Westermann, the seminar participants at the University of Maastricht, at Banque de France and at Bundesbank, and the participants of the XXII annual conference of the central bank of Chile: `Changing Inflation Dynamics, Evolving Monetary Policy' held in Santiago, Chile on 25-26 October 2018, for useful comments and suggestions on a preliminary version of this paper. The views expressed in this paper are of the authors only and do not necessarily reflect those of the European Central Bank or the Eurosystem.}}}
+% \vspace{-1ex} \textit{This paper has been prepared for the XXII annual conference of the central bank of Chile: "Changing Inflation Dynamics, Evolving Monetary Policy." held in Santiago, Chile on 25-26 October 2018. We would like to thank Giorgio Primiceri, Juan Rubio Ramirez, Frank Smets and Thomas Westermann for useful comments and suggestions on a preliminary version of this paper. The views expressed in this paper are of the authors only and do not necessarily reflect those of the European Central Bank or the Eurosystem.}}}
+
+\date{This version: \today. 
+}
+\maketitle
+
+% \begin{abstract}
+% \medskip
+% \noindent \textbf{JEL Classification}: \\
+% \noindent \textbf{Keywords}: 
+% \end{abstract}
+% \pagebreak
+% \setcounter{page}{1}\pagenumbering{arabic}
+
+\maketitle
+
+\begin{abstract}
+\medskip
+This paper documents, for the first time in a systematic manner, the link between labor cost and price inflation in the euro area. Using country and sector quarterly data over the period 1985Q1-2018Q1 we find a strong link between labor cost and price inflation in the four major economies of the euro area and across the three main sectors. The dynamic interaction between prices and wages is time-varying and depends on the state of the economy and on the shocks hitting the economy. Our results show that it is more likely that labor costs are passed on to price inflation with demand shocks than with supply shocks. However, the pass-through is systematically lower in periods of low inflation as compared to periods of high inflation. These results confirm that, under circumstances of predominantly demand shocks, labor cost increases will be passed on to prices. Coming from a period of low inflation, however, this pass-through could be moderate at least until inflation stably reaches a sustained path.\\
+\\
+\noindent \textbf{JEL Classification}: C32, E24, E31\\
+\noindent \textbf{Keywords}: Inflation, pass-through, labor costs, structural VAR, euro area 
+
+\end{abstract}
+\clearpage
+
+\pagebreak
+\begin{comment}
+\section*{Non-technical summary}
+XXX
+\pagebreak
+\end{comment}
+
+\section{Introduction}
+The recent pick-up in labor costs in the United States has rekindled interest in the link between labor cost and price inflation. // A key policy question in the post-Great Recession period is whether a rise in labor costs will translate in higher prices. It is intuitive to expect rising labor costs (i.e. productivity adjusted wages) to translate into higher prices. Labor costs constitute a substantial share of business expenses and hence could be expected to be an important price determinant.
+
+Theoretically, this view is rooted in the post Keynesian cost-push inflation view whereby wage increases in excess of productivity are seen as putting upward pressure on prices, and wages are the exogenous variable determining the future direction of inflation. The validity of this view is empirically grounded on the developments in the 1970s when the so called wage-price spiral was seen as causing inflationary dynamics.
+A number of US policy makers have recently explicitly referred to this cost push view when discussing inflationary developments. For instance, discussing developments in wage gains in relation with productivity growth and the inflation objectives, Clarida (2019) stressed that “wages are not, at present, a source of upward, cost-push pressure on price inflation”. In a similar vein, Powell (2018) noted that “if unemployment were to remain this low for this long, employers would be pushing up wages as they compete for scarce workers, and rising labor costs would feed into more rapid price inflation faced by consumers”.
+
+
+It is however not obvious that rising labor costs should lead to higher prices in the short to medium run. According to the neoclassical theory, the causality runs from price to labor cost inflation. In this case, price inflation results from excess aggregate demand (i.e. a demand pull factor) which exerts pressure on prices to go up. [Also, the cost-push view abstracts from any influences that monetary policy may have on the inflation process. For instance, if a central bank is pursuing a contractionary policy trying to keep inflation low, firms might not be able to pass on higher labor costs into prices.]
+
+
+In line with this, empirical studies have found it difficult to ascertain whether or not wages have an independent influence on prices over shorter horizons. Moreover, a number of studies have documented that the link between labor costs and price inflation appears to have weakened in recent decades. Concretely, Knotek and Zaman (2014) shows how the correlation between wages and prices has decreased since the mid-80s. Similarly, Peneva and Rudd (2017) show how the pass-through of labor cost growth to price inflation in the US has declined over the past several decades (to the point where it is currently close to zero). One explanation put forward has been the better anchoring of inflation expectations in recent years. Another one is that low levels of inflation changes the wage-price nexus because of downward wage ridigities (Daly and Hobijn (2014)). Such a view was also empirically uncovered by Mehra (2000) who finds that in periods of low inflation, wages do not help to predict inflation while it does in high inflationary environment.
+
+
+In this paper, we argue that the diverging findings in the literature can be explained by the fact that the link between labor cost and price inflation is both state and shock dependent.  The idea that the relationship between variables is shock dependent is not new. It has already been more extensively explored in the exchange rate literature (see Forbes et al. (2018), Comunale and Kunovac (2017)), but also for understanding the Phillips curve relationship (see Gali and Gambetti (2018)). However, its relevance for the link between labor cost and price inflation has also already been suggested.
+
+
+Theoretically this view is also reflected in New Keynesian models where the correlation and lead-lag relationship between labor cost inflation and price inflation can be expected to depend not only on the degree of the prevailing price and wage rigidities in the economy but also on the type of shock that hits the economy. As a result, we should in fact expect that the link between labor cost inflation and price inflation varies across time. 
+
+
+Our paper builds on these findings. Concretely, we analyze empirically the link between labor cost and price inflation in the euro area over the short to medium term horizon, and check if the extent to which the link has changed over time depends on the level of inflation and the type of shocks that hit the economy.
+
+
+Overall our results show that XXX UPDATE there is a clear link between labor cost and price inflation. This result is confirmed across a battery of approaches and tests. The link has also remained overall rather stable over time, albeit with some differences across sectors and countries. However, at the same time, and in line with the findings in the US literature, the link appears to depend on the level of price inflation: when inflation is high, the link becomes stronger. Finally, the link is shock-dependent: when the economy is hit by a demand shock, there is a clear and relatively strong link between labor cost and price inflation. This is not the case for supply shocks, where the link is less conclusive. These findings have important policy implications. In particular, the results suggest that monitoring and analyzing labor cost developments in the euro area is indeed relevant to understand the evolution of price inflation. However the importance of these developments does depend on the level of price inflation and on the shocks that prevail in the economy. In an environment of expansionary demand the information contained in labor cost developments in much more relevant for price inflation than when the economy is hit by supply-type shock. In other words, under circumstances of predominantly demand shocks, one can be confident that labor cost increases will be passed on to prices. However, after a period of low inflation (such as the one between 2012 and 2018) this pass-through could be moderate at least until inflation stably reaches a sustained path. The remainder of the paper is organized as follows. Section 2 connects the paper to the existing literature. Section 3 discusses some preliminary analysis of the data and presents unconditional stylized facts on the link between labor cost and price inflation. Section 4 analyses the link in a VAR set up and considers to what extent the link has changed over time or depends on the level of price inflation. Section 5 presents results based on a structural VAR model. Section 6 summarizes and concludes.
+
+
+%To gauge inflationary pressures, policy makers generally pay close attention to labor cost developments. A key reason has been the widely held view that labor cost inflation (i.e. wage inflation adjusted for productivity developments) is one of the main causes of price inflation. From a theoretical perspective, this assumption represents the post-Keynesian cost-push/price-markup view of the inflationary process whereby wage increases in excess of productivity are seen as putting upward pressure on prices, and wages are the exogenous variable determining the future direction of inflation.\footnote{In the paper we will refer to labor cost as compensation per employee developments adjusted for productivity, whereas wages will refer to compensation per employee. In some studies what we consider as the labor cost is also referred to as unit labor cost (ULC).} 
+%(see Faso and Huq, 1988).  
+
+%Such a cost-push view of inflation was often invoked in the 1970s to explain inflationary dynamics\footnote{In the 1970s the so called wage-price spiral was seen as causing inflationary dynamics whereby higher labor cost growth resulted in higher price inflation which in turn led workers to push for higher wage growth and subsequently even faster price increases.} and to this date often remains the underlying assumption in policy communication on the outlook for inflation. 
+
+%For instance: Clarida (2019)
+%"Aggregate wage gains are broadly in line with productivity growth and our 2 percent inflation objective, and they are consistent with a labor market that is operating in the vicinity of full employment. They are not, at present, a source of upward, cost-push pressure on price inflation."
+%https://www.federalreserve.gov/newsevents/speech/clarida20190110a.htm
+
+%October 02, 2018
+%Monetary Policy and Risk Management at a Time of Low Inflation and Low Unemployment
+%Chairman Jerome H. Powell
+%https://www.federalreserve.gov/newsevents/speech/powell20181002a.htm
+%"If unemployment were to remain this low for this long, employers would be pushing up wages as they compete for scarce workers, and rising labor costs would feed into more‑rapid price inflation faced by consumers."
+
+
+%Janet Yellen (2015):
+%5"Some might be surprised that the preceding discussion of inflation determinants makes %no mention of labor
+%costs. In the past, wages provided a good empirical indicator of the future direction of price inflation; indeed,
+%the presence of a so-called wage-price spiral – in which higher price inflation led workers to push for higher
+%wage growth, thereby in turn leading to even faster price increases as firms’ labor costs accelerated – was
+%often invoked to explain the inflationary dynamics of the 1970s. The wage-price spiral no longer seems to
+%provide a useful description of the U.S. inflation process. In fact, some evidence suggests that, like inflation,
+%the rate of growth of labor costs is now characterized by a stable long-run trend; again, a likely explanation for
+%this empirical finding is the improved anchoring of long-term inflation expectations. (See Peneva and Rudd,
+%2015, for some suggestive evidence along these lines.) More generally, movements in labor costs no longer
+%appear to be an especially good guide to future price movements. (This development does not imply that
+%wage developments carry no useful information: Because wage growth is influenced by labor market slack,
+%observed movements in compensation gains can provide an indication of how close the economy is to full
+%employment.)"
+%https://www.bis.org/review/r150928g.pdf
+
+%For instance, in the years leading up to the 2008-2009 global financial crisis, labor cost dynamics were closely monitored to sniff out signals of a possible build up of excessive inflation (\cite{ECB2004}), in part due to concerns of a return of the 1970s type wage-spiral. In the aftermath of the Great Recession, with concerns having shifted from perceiving inflationary and labor cost pressures from being too high to too low, forecast narratives see a pickup in labor cost growth often as a necessary condition for rising inflation (see for instance \cite{ECB2018}).
+
+%\footnote{Similar references on the link between labour cost and price inflation developments were made in a Bank of England speech by the external MPC member Saunders (20/4/2018) who noted that “the Committee forecasts a gradual pickup in domestic cost growth that would help keep inflation slight above target two and three years ahead even as currency effects fade”. For the Bank of Japan, the Deputy Governor Iwata (31/1/2018) noted in a recent speech that “the inflation rate is projected to rise in line with wage increases”. The ECB's forecast narrative  sees a pickup in labor cost growth as a necessary condition for rising inflation (see for instance \cite{ECB2018}}
+% Such a cost-push view of inflation was often invoked  to explain inflationary dynamics\footnote{In the 1970s the so called wage-price spiral was seen as causing inflationary dynamics whereby higher labor cost growth resulted in higher price inflation which in turn led workers to push for higher wage growth and subsequently even faster price increases} and to this date often remains the underlying assumption in policy communication on the outlook for inflation. For instance, in the years leading up to the 2008-2009 global financial crisis crisis, labor cost dynamics were closely monitored to sniff out signals of a possible build up of excessive inflation (\cite{ECB2004}), in part due to concerns of a return of the 1970s type wage-spiral. More recently, with concerns having shifted from perceiving inflationary and wage pressures from being too high to too low, forecast narratives see a pickup in wage growth often as a necessary condition for rising inflation (see for instance \cite{ECB2018}).\footnote{Similar references were made in a Bank of England speech by the external MPC member Saunders (20/4/2018) who noted that “the Committee forecasts a gradual pickup in domestic cost growth that would help keep inflation slight above target two and three years ahead even as currency effects fade”. For the Bank of Japan, the Deputy Governor Iwata (31/1/2018) noted in a recent speech that “the inflation rate is projected to rise in line with wage increases”.}
+
+%While these labor cost-based explanations of inflation dynamics continue to take a prominent place in the policy debate, the academic literature has expressed more skeptical views. Empirical studies -- which generally focused on US data -- have drawn mixed conclusions on the link between labor cost and price inflation, in particular at shorter horizons. First, it remains unclear whether labor costs tend to precede or follow prices (see for instance \cite{Knotek_Zaman_2014} and \cite{Bidder2015}). And second, studies suggest that the relationship between labor cost inflation and price inflation may have weakened over time, potentially due to an improved anchoring of inflation expectations (see for instance \cite{Peneva_Rudd_2017}).  
+
+%However, when looking at the theoretical literature, it is rather unsurprising that empirical studies have not been able to draw any firm conclusion on the link between labor cost inflation and price inflation at shorter horizons. Theoretical models generally do not put into question that in the long run labor cost inflation and price inflation are closely interrelated and that we should eventually expect wage inflation, adjusted for productivity, to move together with price inflation.\footnote{In the long run, the real wage is determined by factors such as productivity, bargaining power, and the ability of firms to mark up prices over costs. Consequently, prices and nominal wages must adjust relative to each other to be consistent with these fundamentals. In this case, long-run growth in the real wage can only come from productivity growth. Because of this, if nominal wages grow faster than productivity, they must, in the long-run, be associated with price inflation. Otherwise workers would ultimately claim all proceeds of production and business owners would be left with nothing. If wage inflation substantially exceeds productivity growth, then inflation must also be high to be consistent with real wages rising in line with long-run productivity improvements.} However, in the short to medium run it is not at all obvious that rising labor costs should translate into price inflation.
+
+%In the industrial organization literature, an alternative to the cost-push view is that firms will charge whatever the market will bear, regardless of their actual costs. If the market’s acceptance of higher prices is the dominant determinant of inflation, the cost-push model would have less validity (see \cite{Banerji2005}). Also, the cost-push view abstracts from any influences that monetary policy may have on the inflation process. For instance, if a central bank is pursuing a contractionary policy trying to keep inflation low, firms might not be able to pass on higher labor costs into prices. In fact, the causality between prices and labor costs might go the other way: in the case of excess demand, firms would be able to increase prices, which would lead to higher demand for wages. Reflecting these differentiations, in  New Keynesian models, the correlation and lead-lag relationship between labor cost inflation and price inflation can be expected to depend not only on the degree of the prevailing price and wage rigidities in the economy but also on the type of shock that hits the economy. As a result, we should in fact expect that the link between labor cost inflation and price inflation varies across time, across countries and also across sectors.
+
+%Having a better understanding of the signal that labor cost developments provide for the inflationary process is of key relevance from a policy perspective. In the euro area for instance, it is well-known that the reaction of inflation dynamics to accelerating growth has been atypically slow in the aftermath of the Great Recession (see \cite{Draghi18}). While there are a number of plausible explanations for this, it nevertheless sheds some uncertainty on the inflation outlook. Having a deeper understanding of the drivers of the inflationary process can help reduce this uncertainty. However, to date there exists no study that has systematically documented and analyzed the empirical link between labor cost inflation and price inflation in the euro area.
+
+%In this paper, we aim to contribute to the literature by documenting and analyzing the link between labor cost inflation and price inflation for the largest four euro area countries, using quarterly data over the period 1985Q1-2018Q1 at the country-wide level and for the 3 largest sectors in each economy (manufacturing, construction and services). We argue that the link between labor cost inflation and price inflation is not only state but also shock dependent. The idea that the relationship between variables is shock dependent is not new. It has already been more extensively explored in the exchange rate literature (see \cite{Forbes_2018}, \cite{Comunale_Kunovac_2017}), but also for understanding the Phillips curve relationship (see \cite{Gali_Gambetti_18}). However, its relevance for the link between labor cost and price inflation has also already been suggested. \cite{Hahn_Gumiel_18} present evidence based on one of the ECB core models for policy simulations that the response of the GDP deflator to wage increases/decreases is different for supply shocks (in this case wage markup shocks) than for demand shocks.
+%The response of price inflation appears to be stronger to demand than to the supply shocks.  %Understanding the signal labor cost developments is providing for the euro area inflationary process is of key relevance from a policy perspective. However, to date, there does not exist a study which systematically analyses the empirical link between labour cost inflation and price inflation for the euro area. 
+% For instance, the projections for euro area inflation are based on the expectation that increasing labor market tightness will push up wage growth, and , given a rather flat outlook for labor productivity, the resulting higher unit labor cost increases should be passed on, at least partly, to prices. 
+% The supply shock captures frictions in the wage setting such as the impact of structural reforms or non-linearities like downward wage rigidity
+
+%Our paper builds on these findings. Concretely, we analyze empirically the link between labor cost and price inflation in the euro area over the short to medium term horizon, and check if the extent to which the link has changed over time depends on the level of inflation and the type of shocks that hit the economy. We focus on the developments in the total economy and three main sectors of the four largest euro area economies.\footnote{Note that we focus on the short to medium term horizon in this paper as this is the most relevant horizon from a policy perspective. Moreover, this is also the horizon at which a clear consensus and view still lacks on the link between wage and price inflation} As the link between labor cost and price inflation has been less documented for the euro area countries, we start by presenting some stylized facts and by conducting preliminary analyses that have become commonplace in the US literature on this topic. More specifically, we (i) look at the cross-correlation between labor cost and price inflation, (ii) test Granger causality, and (iii) conduct both a conditional and unconditional forecast evaluation. Subsequently, we consider the link between labor cost and price inflation in a dynamic and conditional set-up by estimating a 3 variable VAR model for each sector of each country. This allows us to answer questions, such as: (i) whether the conditional correlations are different from the unconditional ones; (ii) by how much price inflation rises when labor costs increase, and (iii) the extent to which this "pass-through" has evolved over time or depends e.g. on the level of price inflation. In the final part of the paper we move to a more structural set-up and analyze whether and how the link between labor cost and price inflation depends on the type of shocks that hit the economy. 
+
+%Overall our results show that in the four biggest euro area countries, contrary to the US, there is a clear link between labor cost and price inflation. This result is confirmed across a battery of approaches and tests. The link has also remained overall rather stable over time, albeit with some differences across sectors and countries. However, at the same time, and in line with the findings in the US literature, the link appears to depend on the level of price inflation: when inflation is high, the link becomes stronger. Finally, the link is shock-dependent: when the economy is hit by a demand shock, there is a clear and relatively strong link between labor cost and price inflation. This is not the case for supply shocks, where the link is less conclusive.
+
+%These findings have important policy implications. In particular, the results suggest that monitoring and analyzing labor cost developments in the euro area is indeed relevant to understand the evolution of price inflation. However the importance of these developments does depend on the level of price inflation and on the shocks that prevail in the economy. In an environment of expansionary demand the information contained in labor cost developments in much more relevant for price inflation than when the economy is hit by supply-type shock. In other words, under circumstances of predominantly demand shocks, one can be confident that labor cost increases will be passed on to prices. However, after a period of low inflation (such as the one between 2012 and 2018) this pass-through could be moderate at least until inflation stably reaches a sustained path.
+
+%The remainder of the paper is organized as follows. Section 2 connects the paper to the existing literature. Section 3 discusses some preliminary analysis of the data and presents unconditional stylized facts on the link between labor cost and price inflation. Section 4 analyses the link in a VAR set up and considers to what extent the link has changed over time or depends on the level of price inflation. Section 5 presents results based on a structural VAR model. Section 6 summarizes and concludes.
+
+\section{Link to the Existing Literature}
+\label{Literature}
+Labor markets have been a focus of interest in the study of price inflation ever since Phillips uncovered the negative relationship between the rate of change in wages and the unemployment rate, i.e. the so called Phillips curve.\footnote{\cite{Fisher1926} already uncovered the link between price inflation and the unemployment rate earlier, however he saw price inflation as driving the rate of unemployment.}
+%\footnote{In the context of the Phillips curve, the causal relationship between wages and prices has often been taken so much for granted that the Phillips curve is used to describe both the relationship between wages and the unemployment rate and between the inflation rate and the unemployment rate.}
+Since then an extensive literature has developed that studies the interrelationship between labor market developments and price inflation. An important share of this research has explored how informative labor cost inflation is for price inflation, in particular in the short to medium run.\footnote{In the long run, the relationship between labor cost inflation (i.e. wage inflation adjusted for productivity) and price inflation is rather uncontroversial, both from a theoretical and empirical point of view.}
+
+Studies have taken a number of avenues to analyze this question. A first important strand in the literature has focused on the causal relationship between wage inflation and price inflation. From a theoretical view, the post-Keynesian view would suggest that the excess of wage gains over productivity gains lead price inflation. Instead, according to the neoclassical theory, the causality between wages and inflation would run in the opposite direction. In this case, the real wage is considered the relevant wage variable in the wage-employment relationship and nominal wages are expected to respond to price changes so as to preserve the real wage, for a given productivity level. Empirically, analyses based on in-sample Granger causality type of tests have yielded mixed conclusions. A number of studies tend to favor the idea that price inflation causes wage inflation and that the causality can differ across sectors. \cite{Hu_Toussaint-Comeau_2010} find that wage growth does not cause price inflation in the Granger causality sense, especially after the mid-80s.  By contrast, price inflation does Granger cause wage growth. Similarly, \cite{EmeryChang96} and \cite{Sbordone_02} find some evidence that rising prices precede the growth in unit labor costs (see \cite{Bidder2015}). However, some other studies find actually no causal link between price and wage inflation. For instance, \cite{Hess_Schweitzer_2000} find that price and wage changes are best predicted by their own lags, meaning that none Granger causes the other. Along similar lines, \cite{Gordon_88} and \cite{Darrat1994} concluded that wages and prices are irrelevant to each other and that they \textit{"live a life of their own"}. Finally, \cite{Banerji2005} approaches this changing relationship from a different angle, looking at cyclical turns. He finds that labor cost inflation leads price inflation at peaks, but lags it at troughs, which would make changes in labor cost a lagging indicator of upturns in price inflation. Finally, \cite{Rissman1995} finds that only in manufacturing and trade services, wages granger cause inflation.
+
+A second strand of the literature has investigated whether wages add any information when trying to forecast inflation (see for instance \cite{Stock_Watson_2008}, \cite{Knotek_Zaman_2014}). Overall, these studies have found that for out-of-sample forecasts, wages do not provide significant additional information beyond what can already be gleaned from other sources, including prices themselves (\cite{Bidder2015}). At the extreme, \cite{Stock_Watson_2008} even show that models using common wage measures may perform worse than their preferred benchmark without wages. 
+
+A final strand of the literature has examined whether the link between labor cost inflation and price inflation is time varying. Studies here tend to find that, while in the past (i.e. prior to the mid 1980s) labor cost inflation did provide signals for price inflation, there is little evidence that in recent years movements in average labor cost growth have been an important independent influence on price inflation. Concretely, \cite{Knotek_Zaman_2014} shows how the correlation between wages and prices has decreased since the mid-80s. Similarly, \cite{Peneva_Rudd_2017} show how the pass-through of labor cost growth to price inflation in the US has declined over the past several decades (to the point where it is currently close to zero). One explanation put forward has been the better anchoring of inflation expectations in recent years. Another one is that low levels of inflation changes the wage-price nexus because of downward wage ridigities (\cite{Daly_Hobijn_2014}). Such a view was also empirically uncovered by \cite{Mehra_2000} who finds that in periods of low inflation, wages do not help to predict inflation while it does in high inflationary environment. \cite{Zanetti2007} found similar results using Swiss data.
+
+From these studies it thus appears generally difficult to ascertain that over shorter horizons wages have an \textit{independent} influence on prices and that the link has weakened over recent years. However, most of them are based on US data. Instead, for the euro area, only few studies have examined this link. \cite{IMF18} replicates the \cite{Peneva_Rudd_2017} approach for the EU15 panel and they find that there is a statistically significant pass-through from labor cost growth to inflation for these countries. \cite{Dees_Gunter_14} explore the cost-push factors to inflation dynamics from the supply side across four sectors (industry, construction, services and agriculture) in the four largest euro area countries over the period 1995-2012. In their analysis the authors find that disaggregated information improves the inflation forecasting performance and that their model, which also accounts for unit labor cost developments, fares comparatively well against common alternatives. Forecast errors however do tend to be larger during the financial crisis period. \cite{JarocinskiMackowiak2017} in turn consider whether unit labor cost, among a large set of potential indicators, add information when trying to forecast inflation. They conduct their exercise for both the US and the euro area. The authors find that the unit labor cost ranks low in the US (28th among 38 variables) while ranking somewhat better for the euro area (18th among 38 variables). Using a different approach, \cite{Tatierska_2010} finds by estimating a New Keynesian Phillips Curve that in eight out of eleven euro area countries there is a plausible relationship between inflation and labor cost growth. Finally, at the micro level, \cite{WDN2009} find that wage and price changes feed into each other. Around 40 percent of the firms surveyed acknowledge that there exists a relationship between wages and prices. However, only 15 percent state that this relationship is relatively strong. For half of them decisions on price changes follow those on wage changes. The opposite holds for another 3 percent, while decisions are simultaneous in the remaining 4 percent. 
+
+%They find that the pattern with respect to intensity and direction of the relationship are very similar across sectors and across countries.
+% WDN:  The degree of price rigidity varies substantially across sectors and depends strongly on economic features, such as the intensity of competition, the exposure to foreign markets and the share of labour costs in total cost. Instead, country specificities, mostly related to the labour market institutional setting, are more relevant in characterising the pattern of wage adjustment
+
+
+%They find that the pattern with respect to intensity and direction of the relationship are very similar across sectors and across countries.
+% WDN:  The degree of price rigidity varies substantially across sectors and depends strongly on economic features, such as the intensity of competition, the exposure to foreign markets and the share of labour costs in total cost. Instead, country specificities, mostly related to the labour market institutional setting, are more relevant in characterising the pattern of wage adjustment
+
+
+\section{A First Exploratory Look at Labor Costs and Inflation in the euro area}
+\label{SectionDescriptive}
+We concentrate in our analysis on the link between labor cost and price inflation in the four largest euro area countries (Germany, France, Italy and Spain) for the economy as a whole and for the three main economic sectors: services, manufacturing and construction.\footnote{The three economic sectors combined represent between 70\% (in Germany) and 80\% (in France) of total value added. We did not include the agricultural sector which represents only between 0.7\% (in Italy) and 2.9\% (in Spain) of total value added.}
+
+For this purpose we collected quarterly data over the period 1981Q1-2018Q1. Details on the data sources and the data series included are provided in Appendix \ref{DataAnnex}. To measure labor costs, we use nominal compensation per employee adjusted for productivity (in line for instance with \cite{Peneva_Rudd_2017}) rather than nominal compensation per employee as the former is a better proxy of the true cost pressure faced by the firm.\footnote{Our wage measure is compensation per employee. Alternative measures of wages across euro area countries exist, such as compensation per hour or hourly labor cost. The latter encompasses employee compensation (which includes wages, salaries in cash and in kind, employers’ social security contributions), vocational training costs, and other expenditure (such as recruitment costs, expenditure on work clothes, and employment taxes regarded as labor costs minus any subsidies received). However, these alternatives are generally consistently available across sectors and countries on a quarterly basis only since 1995 and in some cases (in particular Spain) only later. For this reason, our preferred wage proxy is compensation per employee. Moreover, we find that the correlation between our wage measure (i.e. compensation per employee) and the other measures is rather strong in their overlapping sample periods. For compensation per hour the correlation is on average above 0.8. The only outlier is the Italian manufacturing sector, where the correlation is 0.5. When comparing our measure with Eurostat's labor cost index during overlapping periods, the average correlation is around 0.6.} For inflation, we use the implicit sectoral gross value added deflator.\footnote{Note that CPI inflation is not available at sectoral level. The gross value added deflator at sectoral level has been obtained by dividing nominal value added by real value added at sectoral level. The key difference between the implicit gross value added deflator and the consumer price index is that the latter measures price developments from the perspective of the consumer whereas the former considers price developments from the perspective of domestic production of goods and services. In practice this implies that import prices matter for the consumer price index, but not for the gross value added deflator (where export prices do matter). Appendix \ref{AppendixCPI} plots the evolution of the GDP deflator, labor cost and CPI inflation for the total economy for the 4 countries of the analysis. The chart shows that the correlation between the annual growth rate of GDP deflator and of the Consumer Price Index is very high.}
+
+
+\begin{figure}[ht]
+\begin{center}
+\caption{Cost structure of production of manufacturing and services firms 
+in the euro area}\label{fig:ProdStructure}
+\includegraphics[trim = {70mm 160mm 130mm 20mm}, scale = .8]{Cost_structure_2.pdf}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Eurostat, authors' calculations.
+Latest observation: Input/output tables 2015.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+We conduct our investigation for each country separately, given the substantial heterogeneity in labour market institutions and in the wage formation process. Moreover, we believe that it is important not just to conduct the analysis at the country level but also to exploit the sectoral dimension. Sectors differ in terms of labor market tightness and many other labor market characteristics that affect the pass-through of labor cost to price inflation. The cost structure of production firms is different, with services having a bigger share of labor costs (see Figure \ref{fig:ProdStructure}). 
+At the same time, manufacturing is subject to a larger degree to international competition. Furthermore, other characteristics, such as workers' turnover rates, capital intensity or the degree of wage bargaining institutions are also sector dependent. Finally, sectors differ in terms of their degree of wage rigidity. For instance \cite{DuCaju09} show (using a Belgian firm-level data set) that wages in construction are particularly sticky, less so in services and even less so in manufacturing. \cite{Tatierska_2010} also argues that the sensitivity of price to labor cost inflation differs across sectors, reflecting the different degree of price stickiness; the services sector exhibits stickier prices, so she finds that for most analyzed countries (out of 11 euro area countries), labor cost inflation Granger causes price inflation for the total economy in more instances than for services.
+
+\begin{figure}
+\begin{center}
+\caption{Unit Labor Cost and GDP deflator, year on year \% change}\label{fig:Figure_yoycountries}
+\includegraphics[scale = .6]{Chart_yoy_countries_85.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Various sources, authors' calculations.
+Latest observation: 2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+
+\subsection{Data}
+Figure \ref{fig:Figure_yoycountries} plots the year-on-year growth rate of the labor cost and our measure of price inflation, for the total economy for each of the four countries. The high correlation (ranging between 0.85 and 0.91) between the two series demonstrates why analysts have paid close attention to labor costs when assessing price inflation.\footnote{These high correlations are generally also confirmed at the sectoral level. The correlation is however somewhat lower for the construction sector, where it ranges between 0.31 (for Spain) and 0.64 (for Italy).} However, what is not clear from the Figure is whether movements in labor costs precede movements in price inflation, or vice versa. 
+
+% Showing the same data, however as a scatter plot whereby the x axis represents labor cost inflation at t-6 and the y-axis price inflation at time t, Figure \ref{fig:Figure_ULCdeflatorprepost} indicates that the degree of co-movement across the series has substantially declined over the period under consideration. 
+
+% \begin{figure}
+% \begin{center}
+% \caption{Unit Labor Cost (6 month prior) versus GDP deflator, year on year \% change}\label{fig:Figure_ULCdeflatorprepost}
+% \includegraphics[scale = .1]{Scatter_LC_inflation.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Various sources, authors' calculations.
+% Latest observation: 2018Q1.\par}
+% \end{minipage}
+% \end{center}
+% \end{figure}
+At the same time, Figure \ref{fig:Figure_yoycountries} does clearly demonstrate that in part the high co-movement between the two data series can be explained by a strong common (downward) trend over an important part of the sample (in particular in the 1980s and early 1990s) which can be attributed to the convergence process in the run-up to EMU and the improvements in the anchoring of inflation expectations towards lower levels.
+These common patterns are visible across all countries and sectors (not reported). Therefore, before choosing the appropriate level of aggregation where to remove the trend, we compute a single common factor across all price and labor cost inflation series as well as within-country factors (common to labor cost and price inflation series of all sectors belonging to the same country), and check the variance explained by these factors. It turns out that the variance of the two variables of interest explained by country factors is not only higher on average (60\% vs 50\%) but also consistently higher across countries than the variance explained by a single common factor. The latter would explain a high variance of the two variables in France, Italy and Spain (and not in all sectors) but not in Germany. 
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Adjusted Labor Cost and GDP deflator, year on year \% change}\label{fig:Figure_yoycountries_detrend}
+\includegraphics[scale = .6]{Chart_yoy_detrend_countries_85.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Various sources, authors' calculations.
+Latest observation: 2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+
+Based on this evidence and on the fact that this common movement is related to the improvements in the anchoring of inflation expectations to lower levels, we decided to adjust the series for the common movements at the country rather than sectoral level. To do so, we follow \cite{Knotek_Zaman_2014} which is in turn inspired by the forecasting literature that has found gains in inflation forecasting accuracy by specifying inflation in gap form as the deviation from a slow-moving long-run trend (\cite{KozickiTinsley2001} and \cite{Zaman13}). Concretely, we construct labor cost and price inflation gaps as the year-on-year growth rates in these variables minus the Consensus survey-based long-run inflation expectations. As inflation expectations for the countries in our sample are only available since 1989 (and for Spain even only since 1995), we rely on an unobserved components model to create labor cost and price inflation gaps in the period prior to that.\footnote{The unobserved component model is estimated on the price inflation series and assumes that the inflation trend follows a random walk. This trend estimate from the unobserved component model is then applied to both the labor cost and price inflation series.}
+ The adjusted series are shown in Figure \ref{fig:Figure_yoycountries_detrend}.
+This adjustment also implies that the series are stationary, according to a standard ADF unit root test.\footnote{To ensure that our results do not depend on the approach taken, we also construct alternative price inflation and labor cost inflation gaps as year-on-year growth in these variables less a series-specific or shared long-run trend. Specifically we use an HP filter to adjust the series for the time span where inflation expectations were not available considered. The results in the paper were unchanged when applying this approach.} 
+
+The common trend is crucial in understanding the link between labor cost and price inflation. As shown in Figure \ref{fig:Figure_scatter}, the correlation between price and labor cost inflation appears to have changed after the crisis when looking at unadjusted data, but there is no striking difference when considering the adjusted series. 
+For the remainder of the paper, we will base our analysis on the adjusted series of labor cost and price inflation.
+
+\begin{figure}
+\begin{center}
+\caption{Adjusted and unadjusted labor cost growth (6 months prior) and price inflation in the euro area}\label{fig:Figure_scatter}
+\includegraphics[scale = .6]{Scatter_LC_inflation_adjusted_unadjusted.jpg}
+%trim={<left> <lower> <right> <upper>}
+
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Various sources, authors' calculations.
+Latest observation: 2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\subsection{Cross correlations}
+In this subsection, we analyze the unconditional connection between labor cost inflation and price inflation by looking at cross-correlations, which allow for a simple examination of the lead-lag structure of the correlation and the strength of the connection between the series. If labor cost inflation reliably comes ahead of price inflation in the data, then the strongest cross-correlation should be between labor cost inflation in quarter $t$ and price inflation in some k-th quarter after $t$.
+
+\begin{figure}
+\begin{center}
+\caption{Cross correlation between adjusted labor cost and price inflation}\label{fig:Figure_crosscorr_countries_fullsample}
+\includegraphics[scale = .72]{Chart_crosscorr_countries_fullsample.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Various sources, authors' calculations.
+Note: the charts show the cross correlation between price inflation gaps at time t and labor cost inflation gaps at time t-k.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+The unconditional cross-correlations (Figure \ref{fig:Figure_crosscorr_countries_fullsample}) of the adjusted series continue to show a high contemporaneous correlation (albeit lower than on the non-adjusted series) ranging between 0.4 (France) and close to 0.8 (Spain). 
+
+At the same time, we do not observe a systematic lead/lag pattern across countries or sectors. While in Italy the highest correlations occur mostly contemporaneously, in the German total economy and service sector, labor costs seem to lead prices. In France, except for the service sector, prices lead labor costs. Similarly, in the Spanish service sector and the total economy, prices lead labor costs, while labor costs are clearly leading prices in the construction sector.
+
+Examining the same cross-correlations on a rolling sample we noticed only small changes over time, though in the post-crisis period the correlations have tended to become more contemporaneous (except in the Spanish construction and the French service sector) (see Figure \ref{fig:CrossCorrCountries2008} in Appendix \ref{AppendixCrossCorr}).
+
+%\textit{an ADF test cannot reject the null of a unit root in [qoq] wage inflation for the full sample period as well as for the Q1 1970-Q4 1993 period. However, it is rejected for the post-1993 period.} - taken from \cite{Gali_15}\\
+
+\subsection{Granger Causality and Forecast Evaluation}
+Another angle to look at the link between labor cost and price inflation is to ask whether past changes in labor costs contain useful information for predicting future changes in prices. We consider here two commonly adopted approaches to analyze this question from an in- and out-of-sample perspective, namely Granger Causality and a pseudo out-of-sample forecast evaluation.
+
+\begin{figure} [!htbp]
+\begin{center}
+\caption{Recursive Granger Causality Test Results (p-values)}\label{fig:Figure_GrangerCausality}
+\includegraphics[scale = .72]{Chart_GrangerCausality.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Note: mfg stands for manufacturing, const for construction and serv for services. The lags for the Granger causality test were optimally chosen. The horizontal dark blue line represents the threshold for the significance of the test at a 10\% level.
+Sources: Authors' calculations.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+As regards the Granger Causality test, we adopt here the classical approach whereby in a single equation model price inflation is regressed on \textit{p} lags of price and labor cost inflation and the exclusion of the labor cost inflation lags is tested. The test is performed on a recursive basis, starting by estimating the equation over the period 1985Q1-1998Q4 and subsequently adding one quarter at a time. Lags are optimally chosen with a grid search to minimize the p-values of the Granger Causality test. In other words, we look for the best specification which is the most likely to result in labor cost inflation being Granger causally prior to price inflation.
+
+Results (Figure \ref{fig:Figure_GrangerCausality}) show that contrary to what found for US data (see section \ref{Literature}), we can find  Granger causality from labor cost to price inflation at 10 and 5\% significance. Moreover, and confirming the conclusions from the unconditional cross-correlations, we see that the labor cost and price inflation link has not weakened in the recent period (the notable exceptions are the Italian construction and Spanish service sectors). In fact, in most cases the causality from labor cost to price inflation has strengthened over time. France is the only country where this causality has been less evident throughout the sample, except the construction sector and the service sector until the financial crisis.    
+%ADD EXPLANATION HERE ON FRANCE? ... TO BE SEEN : ON THING I COULD THINK OF WAS THAT IN FRANCE MOST LIKELY THE LINK WENT FROM PRICES TO WAGES (INDEXATION), BUT THAT AS FRENCH COMPANIES - IN PARTICULAR SINCE DE STARTED ITS WAGE MODERATION - HAVE BEEN LOSING COMPETITIVENESS THEY HAVE BEEN VERY RELUCTANT TO PASS THIS ON TO FINAL PRICES; WHICH IS CONSISTENT WITH THE SQUEEZED PROFIT MARGINS. Testing the reverse direction of causality, in all French sectors but construction the link appears to be much stronger from prices to costs. For other countries we also see a strong causality from prices to wages. results available. let's think if we want to mention them.  
+
+In the second approach we focus on the out-of-sample forecasting power of labor cost inflation for price inflation. For this purpose we estimate a simple trivariate VAR model for each sector which includes: real value added growth, labor cost inflation and price inflation. We subsequently perform two exercises: an unconditional and a conditional forecast. In the first case, we compare the unconditional forecast of price inflation from the trivariate VAR with a bivariate VAR (i.e. a model which only includes activity and prices). Our benchmark evaluation period is 1999-2018 but we also checked the results for the periods 1999-2007 and 2008-2018.  Besides the unconditional forecast, we also consider a conditional forecast exercise. In this case, we compare the inflation forecast from the trivariate VAR conditional on the true path of labor costs with the forecast of price inflation from the same model where we condition on a constant path for labor costs (i.e. we assume a random walk).\footnote{Concretely, the strategy is the following: (i) we run an initial estimate of the model until 1998Q4; (ii) we do a rolling estimate thereafter and project inflation (for each sector) 8 steps ahead conditional on the true path of labor cost inflation and conditional on a constant labor cost inflation; (iii) we evaluate the ratios of RMSE obtained in both cases.}
+
+The results from the unconditional and conditional forecasts are shown in the Tables in Appendix \ref{AppendixForecast}. Overall, while the unconditional forecast presents mixed results and would seem to suggest that labor costs can, in our exercise, add some useful but limited information to the price inflation forecasts across samples, the conditional forecasts strikingly show that labor cost inflation has indeed some forecasting power for price inflation in this setup. This result appears consistently across sectors and countries with the exceptions of the construction and service sectors in Spain. Evaluating the forecast before and after (the beginning of the) global financial crisis we observe a tendency to improve the forecasting over the latter part of the sample in case of the total economy for all countries except Italy (where we do not see a change). When checking the opposite direction (from prices to labor costs), overall we observe many more ratios bigger than 1 and a better forecasting performance over the last part of the sample for Germany and Spain. 
+\subsection{Summary}
+This Section can easily be summarized: labor cost and price inflation show a consistent and strong (unconditional) link across euro area countries and sectors at a cyclical frequency, i.e. even after removing a common trend. In fact, without removing a common trend, the correlation between labor cost and price inflation would have spuriously changed after the real and financial crisis, as found for the US data by \cite{Peneva_Rudd_2017}. The direction of causality is not obvious to ascertain but, contrary to the evidence typically based on US data, it is possible to find some in- and out-of-sample forecasting power of labor costs for price inflation. No obvious country- or sector-specific pattern emerges from this preliminary analysis.    
+
+\section{A Simple VAR Analysis}
+\subsection{Empirical Approach}
+\label{SubSectionempirical}
+To examine in a dynamic and more conditional manner the relationship between labor cost and price inflation we use VAR models for each sector of each country, in total of 16 VARs. We do not exclude the possibility of cross-countries/sectors interrelationships, which could be accounted for in a panel VAR approach as in \cite{CanovaCiccarelli09}, but the sparse number of dynamic interrelationship among countries and sectors can make a fully-fledged panel VAR setup inefficient for our aim. Moreover, the heterogeneity in the data makes the approach used here preferable to approaches that restrict the dynamics of the endogenous variables to homogeneity in a pooling panel. Estimating sector by sector allows us to look at average results, if needed, by simply using consistent mean group estimators on the disaggregated results. 
+
+Our baseline VAR system contains three variables: the growth rates of (i) real value added, (ii) unit labor cost and (iii) the value added deflator. The latter two variables have been adjusted as explained in Section \ref{SectionDescriptive} to remove a common trend. The baseline estimation period ranges from 1985Q1 to 2018Q1. The VARs are estimated with four lags and Bayesian techniques assuming a normal-diffuse prior with a Minnesota prior on the matrix of coefficients to deal with the curse of dimensionality (see e.g. \cite{KadyialaKarlsson98}). We also conduct a robustness check of our results by adding the spread between a long and a short-term interest rate to the VAR system. The included variable is intended to proxy for monetary policy. Our findings are largely unaffected by this extension, as shown in the Figures in Appendices \ref{AppendixCholeskiCountriesMP} and \ref{AppendixCholeskiCountriesHighLow_withMP}.
+
+In this simple set up we use the estimates of the 16 VARs to evaluate impulse response functions of inflation to a shock in unit labor cost inflation by means of a Choleski orthogonalization with the variables ordered as listed above. The dynamic responses are used to answer the question: how much does inflation rise when labor costs rise by one-standard deviation. Standardized multipliers are computed mimicking the fiscal literature (see e.g. \cite{MountfordUhlig09}) as the ratio of the cumulative responses of price and labor cost inflation over the horizons 1 (impact) through 28 quarters. With such standardization, the multipliers are comparable across countries and sectors.
+
+\subsection{Main Findings: Baseline VAR Specification}
+We first report the estimated contemporaneous correlations between labor cost and price inflation computed from the moving average representation of the VARs (i.e. the impulse response estimates) truncated to 40 lags. 
+
+% Table generated by Excel2LaTeX from sheet 'Table Latex'
+\begin{table}[htbp]
+  \centering
+  \caption{VAR based correlation between labor cost and price inflation}
+    \begin{tabular}{c|c|cccc}
+    \toprule
+    \multicolumn{1}{c}{} & \multicolumn{1}{c}{conditional on} & Total & Manufacturing & Construction & Service \\
+    \midrule
+    \multirow{4}[1]{*}{DE} & all shocks & \textbf{0.62} & \textbf{0.62} & \textbf{0.50} & \textbf{0.57} \\
+          & shock to y & \textbf{0.78} & \textbf{0.91} & \textbf{0.84} & \textbf{0.79} \\
+          & shock to ulc & \textbf{0.88} & \textbf{0.77} & \textbf{0.39} & \textbf{0.89} \\
+          & shock to p & 0.03  & 0.06  & \textbf{0.56} & \textbf{-0.18} \\
+          &       &       &       &       &  \\
+    \multirow{4}[0]{*}{FR} & all shocks & \textbf{0.40} & \textbf{0.35} & \textbf{0.27} & \textbf{0.48} \\
+          & shock to y & \textbf{0.49} & \textbf{0.39} & 0.02  & \textbf{0.52} \\
+          & shock to ulc & \textbf{0.82} & \textbf{0.83} & \textbf{0.83} & \textbf{0.70} \\
+          & shock to p & -0.04 & \textbf{0.28} & \textbf{0.35} & 0.29 \\
+          &       &       &       &       &  \\
+    \multirow{4}[0]{*}{IT} & all shocks & \textbf{0.63} & \textbf{0.52} & \textbf{0.55} & \textbf{0.63} \\
+          & shock to y & \textbf{0.74} & \textbf{0.88} & \textbf{0.61} & \textbf{0.68} \\
+          & shock to ulc & \textbf{0.90} & \textbf{0.27} & \textbf{0.74} & \textbf{0.85} \\
+          & shock to p & \textbf{0.34} & \textbf{0.03} & \textbf{0.58} & \textbf{0.45} \\
+          &       &       &       &       &  \\
+    \multirow{4}[1]{*}{ES} & all shocks & \textbf{0.75} & \textbf{0.65} & \textbf{0.37} & \textbf{0.41} \\
+          & shock to y & \textbf{0.85} & \textbf{0.92} & \textbf{0.53} & \textbf{0.77} \\
+          & shock to ulc & \textbf{0.96} & \textbf{0.90} & \textbf{0.50} & 0.42 \\
+          & shock to p & \textbf{0.63} & \textbf{0.65} & 0.31  & \textbf{0.54} \\
+    \bottomrule
+    \end{tabular}%
+    \par
+{\small \begin{center}Notes: Table 1 reports estimates of conditional correlations between labor cost and price inflation. Significance (values in bold) is based on 68\% Bayesian credible intervals. \end{center}}
+  \label{Choleski_Correlation}%
+ 
+\end{table}%
+Table \ref{Choleski_Correlation} reports the correlation estimates between the two variables of interest conditional on all shocks (which is equivalent to the unconditional correlation discussed above in Section \ref{SectionDescriptive}) and conditional on shocks to real value added growth, labor cost inflation and price inflation. In most cases, the estimates point to relatively large, positive and significant correlations, confirming the previous results that over the sample of analysis the link between labor cost and price inflation across euro area countries and sectors is quite strong, also after controlling for the own dynamics and for the dynamic relationships with a real activity indicator. The only exception is the correlation conditional on shocks to price inflation which in several occasions is insignificant or negative, and in any event almost consistently lower than the correlations conditional on other shocks. The same correlation conditional on shocks to labor cost inflation is instead always positive and significant and can be as high as 0.96 (Spain, total economy). 
+
+An interesting result based on the same estimates is given by the forecast error variance decomposition (see Figure \ref{fig:all_choleski_FEVD} in Appendix \ref{AppendixCholeskiCountries}) which indicates that almost systematically (with the exception of Italian construction) the variance of inflation explained by shocks to labor cost inflation is bigger than the variance of labor cost inflation explained by price inflation. These percentages are not very high on average but can reach values as high as 70\% (in France).
+
+In order to better understand these results, Figure \ref{fig:Figure_CholeskiIRF_Countries} plots the impulse response functions of price inflation to a shock to labor cost inflation, standardized as explained above in Section \ref{SubSectionempirical}. The estimates can be interpreted as pass-through multipliers from labor cost to price inflation. The full set of results can be found in Figure \ref{fig:TVP_Choleski} in Appendix \ref{AppendixCholeskiCountries} where we also report the recursive estimates of the steady state pass-through distributions (median and 68\% credible interval) for all sectors and countries.
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Choleski decomposition based pass-through from labor cost to price inflation}\label{fig:Figure_CholeskiIRF_Countries}
+\includegraphics[scale = .72]{Results_CholeskiIRF_Countries.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+These charts show that the steady state pass-through values are almost always significantly different from zero. Moreover, they confirm the finding from the unconditional cross-correlations (see Appendix \ref{AppendixCrossCorr}) that there is no apparent structural break or significant change in the link between labor cost and price inflation over time and that there are important heterogeneities across countries and sectors. 
+
+\pagebreak
+
+
+\textit{How does the pass-through differ across countries?} 
+
+Another aspect worth considering is how and why our pass-through results differ across countries. Figure \ref{fig:Figure_CholeskiIRF_Countries} in this regards shows that France exhibits the highest pass-through values across all sectors. A cross-check of the conditional and the unconditional cross-correlations would confirm that the construction and manufacturing sectors in France drive up the pass-through across the economy. A strong pass-through from wage growth adjusted for productivity to price inflation was also found in \cite{INSEE2018}, based on a model for core inflation where also changes in VAT are accounted for. \cite{BdF17} confirm the pattern that we find across sectors in France, namely an initial higher pass-through in manufacturing and a subsequently more important one for services. One reason for such a relatively high pass-through for France could be the presence of stronger second round effects (see also \cite{BdF16}).\footnote{In France the indexation of the minimum wage to HICP inflation feeds through to a large part of base wages and thereby leads to an informal wage indexation; the minimum wage also acts as a benchmark for wage agreements.} 
+
+The pass-through in Germany is lower and clearly driven by services. Nevertheless, a 0.4 pass-through suggests that labour costs are being passed through to prices in a noticeable manner. The Bundesbank also acknowledges the importance of wage developments for consumer prices and confirms that the pass-through from wages to prices is below  50\% (see \cite{Bundesbank18}). Why would the pass-through be lower in Germany than in France? Following the line of thought of \cite{Kugler_18}, the wage setting process in the two countries differs substantially. Germany has witnessed an unprecedented decentralization of the wage formation process since mid 90s and a fall in union coverage rates; trade unions were responsible for a prolonged period of wage restraint. In France there was no similar decentralization of the wage setting process and labour unions play a more prominent role. In a situation of similar productivity growth (see \cite{Kugler_18}) and an increased convergence in inflation rates across countries, the wage moderation process which occurred in Germany would imply, mechanically, a lower pass-through to inflation. 
+
+Also in Italy the pass-through of labour costs to prices is driven by services, confirming the results based on unconditional contemporaneous correlations. The relatively strong pass-through of labour costs to Italian prices is supported by findings based on firm-level data, whereby firms’ inflation expectations are significantly affected by wage changes, particularly in high inflation regimes (see \cite{Conflitti_Zizza_18}). 
+
+Spain stands out with a low steady-state pass-through in the services sector. This is unsurprising in light of previous findings, such as the fact that in this sector it is price inflation which appears to lead labor cost inflation, as reported in Figure \ref{fig:Figure_crosscorr_countries_fullsample}.\\ 
+\\
+In order to put in perspective these findings, we cross-checked our findings against two main results of the euro area Wage Dynamics Network (WDN), bearing in mind that those results are based on firm-level (survey) data that do not cover the post-crisis sample (see \cite{ECB2009}). First, our general result that on average across sectors and countries the pass-through from labor cost to price inflation is positive and significant is consistent with the WDN result that a large percentage of firms surveyed declare that they use a strategy of increasing prices when faced with a (permanent) unexpected increase in wages, especially if firms produce intermediate goods. Second, the WDN finds that at the micro level the strength of the link between prices and labor cost depends on the labor share. In particular, firms with a high labor cost share report more frequently that there is a tight link between price and wage change. If we check the sectors that drive the highest pass-through across countries we are not able to confirm this result. With the exception of France, where the construction sector has the highest pass-through and the highest labor share, for the other countries the highest pass-through happens in sectors that have had the lowest labor share over the sample of the analysis (service in Italy and Germany; manufacturing in Spain, see Charts in Appendix \ref{AppendixLaborShare}).
+
+These results, together with the findings in Section \ref{SectionDescriptive} would suggest that, contrary to the results of the empirical literature based on US data (e.g. \cite{Peneva_Rudd_2017} and references therein), there is no evident or systematic decline in pass-through across euro area countries or sectors. One possible explanation for this divergent finding can simply be the consequence of the different detrending strategy that we adopt, i.e. by imposing a theory-based long-run restriction that the gap between productivity-adjusted nominal wage growth and price inflation disappears in the long-run because the two variables share a common trend.\footnote{We have computed a time-varying pass-through for the US data using the same specification as in \cite{Peneva_Rudd_2017}, removing a common trend from adjusted labor cost and price inflation and the results confirm this intuition.}
+
+\bigskip
+
+\textit{Implications for the behavior of the price-cost markup}
+
+From a theoretical perspective, the markup should be measured by the price-marginal cost fraction. Empirically, however, measuring the marginal cost is often fraught with important difficulties.\footnote{For a detailed discussion on the issues related to and existing approaches to measure the price-cost markup, see \cite{NekardaRamey13}.} For this reason, marginal cost is often proxied by average cost, and more precisely by average labor cost. Theoretically, a number of conditions exist under which the marginal cost equals the average cost. For instance with a Cobb-Douglas technology and no labor adjustment costs, the marginal wage would equal the average wage, and hence the price-average labor cost fraction would represent the markup. With a CES technology and perfect substitution of labour vis-a-vis other non-labour inputs it is also possible to show that the difference between price and labor cost inflation is the price-cost markup.
+Since we find an incomplete pass-through from labour costs to prices, our results have thus implications for the price-cost markup.\footnote{We acknowledge that other costs might make up part of the difference between price and labour costs growth, in particular the cost of capital. Nevertheless, grasping the cost of capital is a complicated problem beyond the scope of this paper and encompasses issues such as the price of intangible assets or quality-adjusted prices of information and communications technology goods.}  
+
+%a theoretical framework underpinned by Cobb-Douglas technology, no labor adjustment costs, and marginal wage equal to the average wage, the difference between price inflation and labor cost growth is equivalent to the change in the markup or profit margins. Since we find an incomplete pass-through from labour costs to prices, our results have implications for the behavior of profit margins.\footnote{We acknowledge that other costs might make up part of the difference between price and labour costs growth, in particular the cost of capital. Nevertheless, grasping the cost of capital is a complicated problem beyond the scope of this paper and encompasses issues such as the price of intangible assets or quality-adjusted prices of information and communications technology goods.}  
+
+
+
+% \begin{figure}[!htbp]
+% \begin{center}
+% \caption{Choleski decomposition based pass-through from labor cost to price-cost markup}\label{fig:Figure_CholeskiIRF_TotalEconomy_Margins}
+% \includegraphics[scale = .72]{Results_CholeskiIRF_TotalEconomy_Margins.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Authors' calculations. The price-cost markup is calculated as the difference between the impulse response of price inflation to a shock to labor cost inflation.\par}
+% \end{minipage}
+% \end{center}
+% \end{figure}
+
+The implication from our estimation results for the price-cost markup is shown in Figure \ref{fig:Figure_CholeskiIRF_TotalEconomy_Margins} in Appendix \ref{AppendixCholeskiMargins}. The Figure shows the evolution of the price-cost markup as the difference between the impulse response of price inflation and labor cost inflation. Moreover, it also shows the cumulative response on the price-cost markup for the total economy. Overall, the Figure confirms, by looking at the results through a different lens, the incomplete pass-through with price-cost markups being squeezed following a positive labor cost shock.  Concretely, following a 1\% shock to labor cost inflation, the price-cost markup instantaneously declines in the total economy
+by around 0.8\% across countries.
+
+
+\subsection{Main Findings: State-Dependent VAR Specification}
+
+Another important dimension in the context of the pass-through from labor cost to price inflation is to test the empirical proposition that this pass-through could depend on the level of price inflation. We look at this particular variable because reduced-form estimates of the pass-through from labor costs to price inflation capture the underlying nominal rigidities and the literature has highlighted that these rigidities may, inter alia, depend on the level of inflation. 
+
+A low pass-through can be associated to a low inflation environment either because low inflation and low expected inflation persistence cause a low pass-through (\cite{Taylor00}), or because low levels of price inflation could be expected to reduce the pass-through due to downward wage rigidities (\cite{Daly_Hobijn_2014}). 
+Another argument that has been suggested as to why the pass-through from costs to inflation could increase with the level of inflation is linked to the search intensity of consumers. Concretely, at low levels of inflation, a large fraction of buyers observe a single price. In that case, any given shock would increase price dispersion sharply, which would increase the search intensity of consumers, thereby reducing firm market power, which limits the ability of firms to pass on the cost increase to prices. At higher levels of inflation, price dispersion is higher and hence any given shock has only a limited impact on price dispersion and the search intensity of consumers. As a result, prices are at higher levels of inflation more responsive to shocks (see \cite{Head_10}). 
+
+Finally, in a high-inflation environment profits might act less as a buffer than in a low-inflation regime due to an intertemporal smoothing of the profit path. For instance, when inflation is high and wages increase firms may expect an increase in interest rates which worsens their borrowing conditions and squeezes their future profit margins; hence, they will maintain their profits in the present, which would favor the pass-through from labor costs to prices. Conversely, the opposite might hold in a lower inflation regime where decreases in interest rates are expected. Another explanation could relate to the higher degree of economic uncertainty associated with a high inflation regime: in such a regime firms may simply not be prepared to buffer a labor cost increase with margins. Overall, the implicit margin responses in the high and low inflation regime, as shown in  Appendix \ref{AppendixCholeskiMarginsRegime_highlow}, confirm this intuition, i.e. that margins act less as a buffer under high compared to a low inflation regime.
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Choleski decomposition based pass-through from labor cost to price inflation under low versus high price inflation}\label{fig:Figure_CholeskiIRF_HighLowInflation}
+\includegraphics[scale = .72]{Results_CholeskiIRF_HighLowInflation_Countries.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+Our sample is not long enough to test this proposition on two regimes. However, in our VAR analysis we can directly test whether this is also the case for euro area countries as the reduced-form estimates of the pass-through from labor costs to price inflation would capture the underlying nominal rigidities. Therefore, we repeat the above exercise by estimating the VAR over two sets of observations using a dummy variable approach, with the level of inflation in one subset being above and in the other being below the corresponding historical averages, respectively. Country results for the total economy are reported in Figure \ref{fig:Figure_CholeskiIRF_HighLowInflation} (the results for the other sectors can be found in Appendix \ref{AppendixCholeskiCountriesHighLow}).
+
+The findings support the theoretical and the US-based empirical literature. Across euro area sectors and countries (with the exception of the construction sector in Italy) the pass-through is systematically higher if it is estimated over samples when the inflation rate of the corresponding sector is higher than the historical average. The finding also supports the view that a pickup in labor cost inflation is a necessary condition for rising inflation, to the extent that higher inflation expectations associated with a change from lower to higher inflation rates could raise the pass-through which in turn could speed up the inflationary process again.
+
+\section{Is the link between labor costs and price inflation shock-dependent?}
+One of the challenges in empirically grasping the link between labor costs and prices arises from the fact that the pass-through may simultaneously depend on several factors. The previous sections allowed us to obtain a preliminary indication of the size of the pass-through from labor cost to price inflation and of the extent to which it has changed over time or has been dependent on the state of the economy (e.g. the level of inflation). 
+
+This analysis, however, does not allow us to identify the source of the correlation between labor cost and price fluctuations or the nature of the exogenous shocks that move labor cost inflation and are subsequently being passed on to price inflation. In this section, we want to take a step further and argue that the pass-through is not a deep parameter underlying the economy, but a shock-dependent coefficient that reflects the mechanisms underlying macro fluctuations.
+
+We know, for instance, that in a New Keynesian model the conditional correlation between labor cost and prices is different for demand and for supply shocks.  The idea of the relationship between variables being shock dependent has also recently been advocated in the exchange rate empirical literature (see e.g. \cite{Forbes_2018}, \cite{Comunale_Kunovac_2017} and references therein), but also for understanding the Phillips curve relationship (see \cite{Gali_Gambetti_18}). 
+The same idea, translated to the labor cost pass-through to inflation, has recently become popular in policy circles.\footnote{The shock dependency of the pass-through should depend on the degree of both price and labor cost stickiness. The theoretical literature analyzing this issue is however scant. Most studies have focused on the impact of shocks on both labor cost and price inflation rather than on the pass-through of labor costs to price inflation following such shock. For instance, \cite{Bils_Chang_2000} did put forward a theoretical framework in which price rigidity differs with the nature of shocks, with prices being more responsive to increases in costs generated by factor prices than to an increase in marginal costs generated by an expansion of output. Model-based results show that prices react more to a technology (supply) shock than to a preference (demand) shock. Although this paper spells out clearly that it is important to disentangle between the nature of the shocks in seeing how prices react, it does not speak precisely to the question we are interested in, i.e. the pass-through from wages to prices.} \cite{Hahn_Gumiel_18} present evidence based on the New Area-Wide Model where the response of the GDP deflator to wages is different for supply shocks than for demand shocks, with this response being stronger to demand than to the supply shocks, where the latter capture frictions in the wage setting such as the impact of structural reforms or downward wage rigidity.
+
+\subsection{A structural VAR analysis}
+We address the question of the pass-through shock-dependence in the same 3-variable VARs and identify a supply- and a demand-type shock for all countries and sectors using the most parsimonious set of sign restrictions as reported in Table \ref{tab: identification1}. 
+
+\begin{table}
+\begin{center}
+\caption{The 2 shock VAR: identification scheme}
+\vskip 0.5cm
+\label{tab: identification1}
+%\resizebox{\textwidth}{!}{
+\begin{tabular}{lccc}
+\toprule
+\textit{Variables} & \multicolumn{3}{c}{\textit{Shocks}} \\ \\[-1ex]
+& Demand   & Supply  & Other \\
+Real value added & \textbf{+} & \textbf{+} & $\bullet$ \\
+Prices & \textbf{+} & \textbf{-} & $\bullet$ \\
+Labor cost & $\bullet$     & $\bullet$     & $\bullet$ \\
+\end{tabular}
+\end{center}
+\par
+{\small \begin{center}Notes: $\bullet$ = unconstrained, \textbf{+} = positive sign,
+\textbf{--} = negative sign \end{center}}
+\end{table}
+
+Specifically, a positive demand shock is a shock that increases output growth and price inflation, whereas a supply shock increases output growth but reduces price inflation. Labor costs are left unrestricted, as a certain shock can affect wages and productivity in the same direction and the relative impact is not straightforward. A third shock in the model is left unidentified. The restrictions are imposed only for the first period and as inequality restrictions. The VAR is estimated as in the previous Section with Bayesian techniques and a normal-diffuse prior with a Minnesota prior for the mean and the variance of the VAR parameters. Impulse responses are computed based on 5000 draws from the posterior simulators. 
+
+The baseline results from our estimation are reported in Appendix \ref{AppendixSVAR}. By construction, we find that output and price inflation rise after a positive demand shock, but that output rises and price inflation decreases after a positive supply shock. Labor cost growth tends to decrease immediately after a positive demand shock and rise thereafter (that can be due to the fact that the increase in wages is smaller than the one in productivity, as the output tends to grow more than employment, as suggested by \cite{Hahn_Gumiel_18}). After a positive supply shock, labor cost inflation increases.
+
+Equipped with these estimates we run two counterfactual experiments. In the first experiment we compute the counterfactual labor cost and price inflation that would be generated by a demand or a supply shock and check how the correlation structure between the counterfactual variables changes according to the shock. In the second experiment we compute the counterfactual responses of price inflation to demand or supply shocks and check how much amplification we give up by shutting down the labor cost channel, i.e. the response of labor cost inflation to the same shock.    
+
+\subsection{The correlation between labor cost and price inflation conditional on demand and supply shocks}
+The first experiment consists of computing a historical decomposition and isolating the counterfactual labor cost inflation and price inflation that would have been generated by demand or supply shocks only. The correlation structure between these counterfactual series is then checked as in \cite{Gali_99}. We compute the maximum correlation over a wider lead/lag structure. 
+\begin{figure}
+\begin{center}
+\caption{Maximum correlation between price inflation at (time $t$) and labor cost inflation (time $t-k$) and the lag for maximum correlation}\label{fig:2ShockVAR_Correlation}
+\includegraphics[scale = .95]{Results_2ShockVAR_MaxCorrelation_HistD.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Note: The chart shows the cross correlation between counterfactual price inflation at time t and labor cost inflation at time t-k.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+Results are reported in Figure \ref{fig:2ShockVAR_Correlation} which shows the cross-correlation between the counterfactual price inflation at time $t$ and labor cost inflation at time $t-k$. From the Figure one can see that demand shocks affect prices and labor costs in a similar manner and prices appear to lead labor costs in their response to demand shocks. Conversely, supply shocks appear to affect prices and labor costs differently, with in most cases labor costs leading price inflation. The Figure also shows that the correlation between labor cost inflation and price inflation tends to be higher for demand than for supply shocks. This simple fact can help to shed some light on the lack of consensus in the empirical literature that  has tried to disentangle the direction of causality in the wage-price inflation nexus \citep{Knotek_Zaman_2014}: results are likely to depend on the sample and on the combination of shocks hitting the economy over that particular sample. 
+
+\subsection{The amplification due to the labor cost channel}
+In the second experiment, we check the importance of the labor cost channel as an amplifier for the response of price inflation. In this case, we identify the same demand and supply-type of shocks and then compare the response of price inflation in a system where all variables endogenously react to the initial shock with the response of price inflation in a system where the response of labor costs has been shut down. This will tell us how much of the shock is passed on to prices via labor costs.
+
+To give an intuition for this approach, consider a positive demand shock which boosts prices as firms have a higher pricing power and their demand for inputs of production also increases. Of all the mechanisms through which demand shocks affect prices, one particular channel relates to labor costs. We would like to isolate this channel by gauging the impact of demand shocks on prices through labor costs. We will compute an impulse response function ($IRF$) where the response of labor costs to a demand shock is zero and check the difference between the unrestricted $IRF$ for price inflation and the $IRF$ for the same variable when labor costs do not react to demand shocks. This difference is an indication of how much of the impact of demand shocks on inflation is driven by labor costs.
+
+The idea of studying amplification mechanisms in a VAR by building a counterfactual scenario in which a certain variable does not react to a particular shock has been previously explored for other purposes. The impact of oil price shocks has been assessed via the reaction of inflation expectations (see \cite{Wong_2015}) or via the reaction of monetary policy (see \cite{Kilian_Lewis_2011} or \cite{Bernanke_Gertler_Watson_97}, who took inspiration from an early version of \cite{Sims_Zha_2006}). \cite{Bachmann_Sims_2012} apply the same methodology to isolate the role of confidence in the transmission of government spending shocks, while \cite{Ciccarelli_Maddaloni_Peydro_15} identify the effects of monetary policy shocks via the credit channel. What these papers have in common is that they operate with a VAR framework identified with contemporaneous zero restrictions. In a Choleski framework each variable has a corresponding shock; it is straightforward to shut down the $IRF$ of a variable by constructing a sequence of hypothetical shocks in that variable in a recursive manner, such that its $IRF$ is zero at all times. 
+
+When we move away from the Choleski identification scheme to one based on sign restrictions, as we propose in this paper, things get more complicated. Let's say we want labor costs not to react to demand shocks; there is no \textit{labor cost shock} to offset the response of labor costs to demand shocks. One would have to make certain assumptions on which other shocks are doing the offsetting (i.e. is it the technology, other shocks or, our preferred version, a combination of all shocks hitting the economy). Appendix \ref{AppendixCountIRFsFormulas} shows how we derive the counterfactual $IRFs$.
+
+
+% \begin{figure}
+% \begin{center}
+% \caption{Amplification of price inflation response to shocks due to the labor cost channel}\label{fig:2ShockVAR_Counterfactual_Impact}
+% \includegraphics[scale = .95]{Results_2ShockVAR_MaxImpact_Counterfactual.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Various sources, authors' calculations.
+% Sample period: 1985Q1-2018Q1.\par}
+% \end{minipage}
+% \end{center}
+% \end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Amplification of price inflation response due to the labor cost channel}
+
+\smallskip
+\includegraphics[scale = .55]{Amplification_2shock_VAR.jpg}\label{fig:2ShockVAR_CounterIRF}
+% trim={<left> <lower> <right> <upper>}
+ \begin{minipage}{\textwidth} {\footnotesize
+ Note: This chart indicates, in blue, the quarters following a demand or a supply shock where the median counterfactual IRF lies outside the 68 percent posterior uncertainty band of the unrestricted IRF; borderline cases were left out. The white diamond indicates the quarter for maximum impact of the price inflation response.\par}
+ \end{minipage}
+\end{center}
+\end{figure}
+%Results_2shockVAR_contribWtoP
+
+% \begin{figure}
+% \begin{center}
+% \caption{Quarter for maximum impact of price inflation response to shocks due to the labor cost channel}\label{fig:2ShockVAR_Counterfactual_Lag}
+% \includegraphics[scale = .95]{Results_2ShockVAR_MaxLag_Counterfactual.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: This chart indicates the quarter following the demand or supply shock, where the difference between the impulse responses to price inflation with and without the labor cost channel is the largest.
+% Sample period: 1985Q1-2018Q1.\par}
+% \end{minipage}
+% \end{center}
+% \end{figure}
+
+Results of the counterfactual exercise are summarized in Figure \ref{fig:2ShockVAR_CounterIRF} (and Appendix \ref{AppendixSVAR2}). This Figure shows in a synthetic manner the quarters when we find a notable difference between the impulse responses with and without the labor cost channel by marking these quarters with blue cells. The white diamond shows the quarter for which this amplification reaches its peak. 
+
+The striking feature is that for all countries and sectors, there is a notable amplification under demand shocks, whereas the amplification under supply shocks occurs in fewer instances. In other words, when the economy is predominantly hit by demand-type shocks, it is more likely that the increase in wages above productivity is passed on to inflation than when the economy is predominantly hit by supply-type shocks. It is worth noting that the peaks of this pass-through tend to occur at a higher lag for demand-type shocks than for supply-type shocks.
+
+The question that arises from these results is: why would labor costs tend to be passed through to prices when the economy is hit by a demand rather than by a supply shock? This analysis cannot provide a definite answer. But it can be reconciled with previous findings whereby the willingness of firms to increase prices after labor cost increases is larger when positive demand shocks dominate. In such an environment, the share of higher income consumers with lower demand elasticity increases, which in turn raises firms’ ability and power to pass-through cost increases to prices (see for instance \cite{Dornbusch_87} and \cite{Bergin_Feenstra_01}). This has implications for the differentiated behavior of the markup. In an environment where labour costs increase due to demand shocks, the price-cost markup would act as a buffer to a smaller extent than when the increase occurs due to supply shocks. The literature has stressed that the cyclicality of the markup is conditional on various types of shocks (see for instance \cite{GaliGertlerLopez2007} and \cite{NekardaRamey13}). We find that under a positive demand shock, margins are pro-cyclical (see Appendix \ref{AppendixMarginsSVAR2}). Initially the price-cost markup increases, as price inflation increases, while labor costs growth increases by less or even declines in some instances. In a second stage, margins start to decline, as labor cost growth starts to increase (e.g. employment increases with delay) and they subsequently stabilize. Under a positive supply shock, margins appear to be counter-cyclical. They decrease because price inflation falls, while labor costs growth increases. The evolution of the price-cost markup is similar in the unrestricted and counterfactual scenario. What differs is the magnitudes of adjustment. In the medium term, the price-cost markup tends to stabilize at lower levels in the unrestricted world compared to the counterfactual, which reflects a positive pass-through of labor costs to prices; also, this difference on the medium-term is more notable for the markup following a demand shock, which reflects the more sizable pass-through in case of demand shocks.     
+
+%These results would confirm recent findings in the literature that the cyclicality of the markup is conditional on various types of shocks (see for instance \cite{GaliGertlerLopez2007} and \cite{NekardaRamey13}). XXX TO BE COMPLETED ONCE CHARTS FINALISED.
+
+We also acknowledge the caveat that the trivariate VAR is insufficient to properly identify supply-type shocks which in our parsimonious representation are identified based on the negative co-movement between output and prices. This simple identification scheme can in fact hide various types of supply shocks. One can imagine three types of such shocks, all of them increasing output and reducing prices: (i) a positive technology/productivity shock, which increases wages; (ii) a negative wage mark-up shock, which reduces wages; and (iii) a positive labor supply shock, which also reduces wages. The next subsection deals with this idea.
+
+\subsection{Robustness check: A structural VAR with  labor market shocks}
+
+In this subsection we check the robustness of the results obtained above along 2 dimensions: first, we enrich the identification scheme with more shocks on the labor market and second, instead of a VAR including labor cost inflation we consider a VAR including both wage and productivity growth separately, and we construct counterfactual $IRFs$ where we impose that the difference in wage and productivity growth is shut down after a certain shock hits (see details in Appendix \ref{AppendixCountIRFsFormulas}). 
+\begin{table}
+\begin{center}
+\caption{The 4 shocks VAR: identification scheme}
+\vskip 0.5cm
+\label{tab: identification4shock}
+%\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccc}
+\toprule
+\textit{Variables} & \multicolumn{3}{c}{\textit{Shocks}} \\ \\[-1ex]
+& Demand   & Supply & Labor supply & Wage mark-up & Other \\
+
+Real value added & \textbf{+} & \textbf{+} & \textbf{+} & \textbf{+} & $\bullet$ \\
+Prices & \textbf{+} & \textbf{-} & \textbf{-} & \textbf{-} & $\bullet$ \\
+Wages & \textbf{+} & \textbf{+} & \textbf{-} & \textbf{-} & $\bullet$ \\
+Productivity & \textbf{+} & \textbf{+} & $\bullet$ & $\bullet$ & $\bullet$ \\
+Unemployment rate & \textbf{-} & $\bullet$ & \textbf{+} & \textbf{-} & $\bullet$ \\
+\end{tabular}
+\end{center}
+\par
+{\small \begin{center}Notes: $\bullet$ = unconstrained, \textbf{+} = positive sign,
+\textbf{--} = negative sign \end{center}}
+\end{table}
+
+The first issue we address is particularly important, because, what we identify as a `supply shock' based on the negative co-movement between output and prices could in fact bundle together various types of shocks, as said above, and this complicates the assessment of the pass-through following a certain shock.
+
+The VAR is now composed of 5 variables, namely: real value added, GDP deflator, nominal compensation per employee, labor productivity, and unemployment rate. All variables except the unemployment rate are expressed in annual growth rates, with the GDP deflator and nominal compensation adjusted by long term expectations, as previously discussed. The system can only be estimated on the total economies since unemployment rate data does not exist at the sectoral level. 
+
+Besides the $classical$ demand and supply shocks, this system allows us to identify two more labor market shocks, as shown in Table \ref{tab: identification4shock}. A positive labor supply would increase the labor force participation, which translates into a positive impact on output and on the unemployment rate. Wage growth falls, and so does inflation; the different wages response allows disentangling labor supply from technological shocks, as explained in \cite{Peersman_Straub_09}. A wage mark-up shock, or a wage bargaining shock, is a shock that allows firms to capture a larger share of the bargaining surplus, which contributes to lower marginal costs, wage growth and inflation. Output increases and the unemployment rate decreases, as detailed in \cite{Foroni_18}.\footnote{The estimation has been performed using the BEAR toolbox, see \cite{Dieppe_2016}.} 
+
+Results are reported in Figure \ref{fig:4ShockVAR_Counterfactual} and in Appendix \ref{AppendixSVAR5}. Overall, the results from the larger VAR model confirm the findings in the previous subsection, namely that labor costs are being passed through to price inflation in an environment where demand shock are predominant. When it comes to supply shocks, it turns out that the `classical' supply (technology) shocks play a negligible role in the pass-through of labor costs to price inflation, but supply shocks originating from the labour market, namely labor supply and wage mark-up shocks do matter and they trigger a fast transmission (in line with an identified smaller lag of maximum impact in case of supply shocks in Figure \ref{fig:2ShockVAR_CounterIRF}). These results hold also when controlling for monetary policy. In Appendix \ref{AppendixSVAR6} we identify an additional monetary policy shock by including in the VAR model the spread between the long and the short term interest rates prevailing in each country.\footnote{this measure could reflect the monetary policy stance also in the unconventional monetary policy period (see \cite{Baumeister_Benati_13}), but admittedly also non-policy factors
+affecting the term structure, such as sovereign debt issues.}
+
+%\begin{figure}
+%\begin{center}
+%\caption{Amplification of price inflation response due to the labor cost channel in the 4 shock VAR}\label{fig:4ShockVAR_Counterfactual}
+%\includegraphics[scale = .95]{Amplification_4shocks_VAR.jpg}
+% trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Various sources, authors' calculations.
+% Sample period: 1985Q1-2018Q1.\par}
+% \end{minipage}
+%\begin{minipage}{\textwidth} {\footnotesize
+% Note: This chart indicates, in blue, the quarters following a demand or a supply shock where the median counterfactual IRF lies outside the 68 percent posterior uncertainty band of the unrestricted IRF. \par}
+% \end{minipage}
+%\end{center}
+%\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Amplification of price inflation response due to the labor cost channel in the 4 shock VAR}\label{fig:4ShockVAR_Counterfactual}
+\includegraphics[scale = .95]{Amplification_4shock_VAR.jpg}
+% trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Various sources, authors' calculations.
+% Sample period: 1985Q1-2018Q1.\par}
+% \end{minipage}
+\begin{minipage}{\textwidth} {\footnotesize
+ Note: This chart indicates, in blue, the quarters following a certain shock where the median counterfactual IRF lies outside the 68 percent posterior uncertainty band of the unrestricted IRF. \par}
+ \end{minipage}
+\end{center}
+\end{figure}
+
+
+% \section{Country stories}
+
+
+% Looking at the pass-through computed in the simple Choleski VAR, France stands out with the highest values. A strong pass-through form wage growth adjusted for productivity onto price inflation was also found in an INSEE study (\cite{INSEE2018}), based on a model for core inflation where also changes in VAT are accounted for, inter alia. They write: "wages remain the principal determinant of price dynamics".
+% % "wages remain the principal determinant of price dynamics"; "The sluggish
+% % growth of wages thus appears to be the principal explanatory factor behind the slowdown in inflation observed in recent years."
+% % "the correlation between wages and prices is
+% % steeper in the models incorporating productivity effects".
+
+% Also for Germany, the Bundesbank acknowledges the importance of wage developments for consumer prices and they state that the pass-through from wages to prices is below  50\% (see \cite{Bundesbank18}). Our estimates fall in this interval.
+
+% Why would the pass-through be higher in France than in Germany? 
+
+% \textit{Wage moderation in Germany}\\
+% Following the line of thought of \cite{Kugler_18}, the wage setting process in the two countries differs substantially. Germany has witnessed an unprecedented decentralization of the wage formation process since mid 90s and a fall in union coverage rates. Trade unions were responsible for a prolonged period of wage restraint. In France there was no similar decentralization of the wage setting process and labour unions play a more prominent role. In a situation of similar productivity growth (see \cite{Kugler_18}) and an increased convergence in inflation rates across countries, the wage moderation process which occurred in Germany would imply, mechanically, a lower pass-through to inflation. 
+
+% % "an unprecedented decentralization of the wage setting process in Germany, from the sectoral level down to the level of the firm or the individual".After the fall of the Iron Curtain, the German economy was burdened by the high costs of reunification, and firms had the opportunity to relocate production to Central and Eastern European countries where workers are highly skilled and wages are low. Consequently, it became increasingly costly for firms to recognize sectoral union agreements, and more and more firms opted out. Whereas in 1996, about 80\% of workers were covered by union agreements (either at the firm or the sectoral level), by 2016 union coverage rates had fallen to 53\%. The fall in union coverage rates has thus led to a decentralization of the wage setting process, from the industry level to the firm or even individual level. It also contributed to the low wage growth observed in Germany between 1995 and 2008. As more and more firms left sectoral union agreements, trade unions were willing to make concessions unheard of in other countries, in order to prevent a further loss in influence. Second, trade unions in Germany showed extraordinary wage restraint throughout prolonged periods of time over the past two decades, even in periods of increasing labor productivity and declining
+% % unemployment.
+
+% % In France, in contrast, the system of industrial relations prevented a similar decentralization of the wage setting process. In consequence, wages, in particular at the bottom of the wage distribution, grew much faster in France than in Germany, although labor productivity rose at a similar rate in the two countries.
+% % Hartz reforms, implemented between 2002 and 2005.
+
+% % although labor productivity rose at a similar rate in the two countries.
+
+% \textit{Stronger second round effects in France}\\
+% The link between labour costs and price inflation could be stronger in an environment of stronger second round effects, in which prices feed into labour costs and then labour costs feed into prices (see the body of the e-mail). This is also related to the observed overall higher inflation in France (even after de-trending with inflation expectations) and this is another factor which can explain the higher pass-through in France through the lense of our results.
+
+
+% \textit{The relative importance of shocks hitting the two economies}\\
+% France differs from Germany in the fact that the variability of the contribution to price inflation of demand shocks is much higher than that of labour supply and wage mark-up shocks (as found based on the SVAR with more labour market shocks). In the case of Germany, the latter two appear to be relatively more important than in France. This shows that the result from simple Choleski exercise can be reconciled with the fact that the pass-through was found to be more important for demand shocks. \\
+% Across sectors, In Germany and Italy the services sector drive the pass-through of labor costs to price inflation. In Spain, the pass-through for services does not appear to be particularly strong, a result that is consistent across all methods employed.
+
+\section{Summary and conclusions}
+Understanding the signal labor cost developments are  providing for the euro area inflationary process is of key relevance from a policy perspective. For instance, the projections for euro area inflation are based on the expectation that increasing labor market tightness will push up wage growth and, given a rather flat outlook for labor productivity, the resulting higher unit labor cost increases should be passed on, at least partly, to prices. However, to date, there does not exist a study which systematically analyses the empirical link between labor cost inflation and price inflation for the euro area and the euro area countries. In this paper we document this link for the first time. 
+
+Using country and sector quarterly data over the period 1985Q1-2018Q1 we uncover a number of facts. First, we find that the cost-push view of inflation found in the economic theory can have some support in the data. We document a strong link between labor cost and price inflation in the four major economies of the euro area and across three sectors (manufacturing, construction and service). 
+
+Second, the analysis supports an imperfect but relatively high pass-through on average from costs to prices, in line with available firm-level evidence which documents a statistically significant relationship from the frequency of wage changes to that of prices, and a common strategy by several firms of increasing prices when faced with unexpected increases in wages (\cite{WDN2009}).
+
+Third, the link between price and labor cost growth is quite heterogeneous across countries and sectors. France is the country where this pass-through is higher with the link being strongest in the construction sector. In Germany and Italy the driving sector is services, while in Spain the manufacturing sector shows the highest pass-through. Hence, with the exception of France, this evidence contrasts with the idea that the pass-through of wages into prices should be particularly strong in firms/sectors with a high labor share, i.e. sectors which should also be characterized by a higher degree of price stickiness (\cite{WDN2009}). 
+% We need to check if our results are in line with other ideas: that the extent to which wages feed into prices is inversely related to the intensity of competitive pressures faced by the firms, their exposure to foreign markets and their size.
+
+Fourth, the dynamic interaction between prices and wages is time-varying and depends on the state of the economy. In particular, the pass-through is systematically lower in periods of low inflation as compared to periods of high inflation. This results would be in line with an expectation theory as e.g. proposed by \cite{Taylor00}, whereby \textit{a decline in the degree to which firms pass through changes in costs to prices is frequently characterized as a reduction in the pricing power of firms.}      
+
+Fifth, the wage-price pass-through also depends on the shocks hitting the economy. The results presented show that it is more likely that the labor costs are passed on to price inflation with demand shocks than with supply shocks. This result holds also when we augment the dynamic system to disentangle more clearly various types of supply shocks, e.g. to capture frictions in the wage setting such as the impact of structural reforms or downward wage rigidity. Rationalizing this result is not simple as there is no comprehensive theoretical literature which focuses on the difference in the wage pass-through to inflation according to different shocks. Some limited theoretical frameworks are available where price rigidity differs with the nature of shocks, with prices being more responsive to increases in costs generated by factor prices driven by technology than to increases in marginal costs generated by an expansion of output driven by preferences (see e.g. \cite{Bils_Chang_2000}), but nothing can be inferred about the pass-through from wages to prices.
+
+These results have clear implications for the behaviour of profit margins or price-cost markups. In an environment where labour costs increase due to demand shocks, the price-cost markup would act as a buffer to a smaller extent than when the increase occurs due to supply shocks.   
+
+Finally, our results support the view that a pick-up in labor cost growth can drive underlying inflation and confirm the idea that under circumstances of predominantly demand shocks labor cost increases will be passed on to prices (see e.g. \cite{Hahn_Gumiel_18}). After a period of low inflation, however, this pass-through could be moderate at least until inflation stably reaches a sustained path.
+
+\pagebreak
+
+\begin{appendices}
+\section{Data documentation} \label{DataAnnex}
+Most standard data (i.e. nominal and real value added, compensation of employees, total employees) were obtained as seasonally and working day adjusted series from national accounts over the period 1985Q1-2018Q1 for the 4 biggest euro area countries. All series were obtained for the aggregate economy and three sectors: manufacturing, construction and services.
+
+Short and long term interest rates come from the ECB Statistical Data Warehouse \\ (https://sdw.ecb.europa.eu/home.do). Unemployment rates were obtained from Eurostat (and back-casted with seasonally adjusted data from IMF IFS in the case of Germany and with data from national sources through Haver Analytics in the case of Spain). A number of series were derived on the basis of the national accounts data. The value added deflator was calculated as the ratio of the nominal to real value added. Labor productivity was measured as the ratio of real value added to total employees while compensation per employee was calculated as the ratio of compensation of employees to total employees.  Finally, unit labor costs were calculated as the ratio of compensation per employee to labor productivity. More details on the country specific national accounts data are listed below:
+
+\textit{Germany:} Official aggregate and sectoral data on real value added, nominal value added, compensation of employees and total employees were obtained from the Federal Statistical Office through Haver Analytics. In the case of the services sector and total employees, all long time series were constructed by chain linking the ESA2010 (NACE2) and ESA1995 (NACE1) databases. The series were adjusted for the structural break due to unification. Data prior to 1991 is for West Germany only. For services, data prior to 1991 is the sum of hotels and transport, finance and business services and public and personal services.
+
+\textit{France:} Official aggregate and sectoral data on real value added, nominal value added, compensation of employees and total employees were obtained from the INSEE through Haver Analytics. Services sector data were calculated as the sum of market and non-market services.
+
+\textit{Italy:} Official aggregate and sectoral data on real value added, nominal value added, compensation of employees and total employees were obtained from ISTAT through Haver Analytics. In the case of the services sector, all long time series were constructed by chain linking the ESA2010 (NACE2) and ESA1995 (NACE1) databases. 
+
+\textit{Spain:} Official aggregate and sectoral data on real and value added, compensation of employees and total employees were obtained from INE through Haver Analytics. With the exception of the total economy data, long series were constructed by chain linking the ESA2010 (NACE2) and ESA1995 (NACE1) databases. For services, data prior to 1995 is the sum of market and non-market services series. Historical data on real value added and compensation of employees was obtained from the INE website. Long historical data on the manufacturing sector was not available, the data used is for industry.
+
+\clearpage
+
+
+\section{GDP deflator and CPI Series}
+\label{AppendixCPI}
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Labor Cost, GDP deflator and CPI, year on year \% change}\label{fig:Figure_yoycountries_CPI}
+\includegraphics[scale = .6]{Chart_yoy_countries_CPI_GDPdeflator.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Various sources, authors' calculations.
+Latest observation: 2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\clearpage
+
+
+% \section{Detrended Series}
+% \label{AppendixDetrend}
+
+% \begin{figure}
+% \begin{center}
+% \caption{Unit Labor Cost and GDP deflator, year on year \% change}\label{fig:Figure_yoycountries}
+% \includegraphics[scale = .6]{Chart_yoy_countries_85.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Various sources, authors' calculations.
+% Latest observation: 2018Q1.\par}
+% \end{minipage}
+% \end{center}
+% \end{figure}
+
+% \begin{figure}[!htbp]
+% \begin{center}
+% \caption{Detrended Labor Cost and GDP deflator, year on year \% change}\label{fig:Figure_yoycountries_detrend}
+% \includegraphics[scale = .6]{Chart_yoy_detrend_countries_85.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Various sources, authors' calculations.
+% Latest observation: 2018Q1.\par}
+% \end{minipage}
+% \end{center}
+% \end{figure}
+
+% \clearpage
+
+\section{Cross correlations by sectors and across time} \label{AppendixCrossCorr}
+
+%\begin{figure}[!htbp]
+%\begin{center}
+%\caption{Cross correlation between adjusted labor cost and price inflation}\label{fig:CrossCorrSectors}
+%\includegraphics[scale = .75]{Chart_crosscorr_sector_fullsample.jpg}
+% trim={<left> <lower> <right> <upper>}
+%\begin{minipage}{\textwidth} {\footnotesize
+%Sources: Various sources, authors' calculations.
+%Note: the charts show the cross correlation between price inflation gaps at time t and labor cost inflation gaps at time t-k. 
+%Sample period: 1985Q1-2018Q1.\par}
+%\end{minipage}
+%\end{center}
+%\end{figure}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Cross correlation between adjusted labor cost and price inflation since 2008}\label{fig:CrossCorrCountries2008}
+\includegraphics[scale = .75]{Chart_crosscorr_countries_2008sample.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Various sources, authors' calculations.
+Note: the charts show the cross correlation between price inflation gaps at time t and labor cost inflation gaps at time t-k.
+Sample period: 2008Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\clearpage
+\section{Forecasting power of labor costs for price inflation}
+\label{AppendixForecast}
+\begin{table}[!htbp]
+\small
+  \centering
+  \caption{Ratio of RMSE of inflation forecasts of models with to models without labor cost.}
+    \begin{tabular}{c|cccc|cccc|cccc}
+    \toprule
+    \multicolumn{1}{r}{} & \multicolumn{4}{c}{\textbf{\footnotesize{1999Q1-2018Q1}}} & \multicolumn{4}{c}{\textbf{\footnotesize{1999Q1-2007Q4}}} & \multicolumn{4}{c}{\textbf{\footnotesize{2008Q1-2018Q1}}} \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{\footnotesize{GERMANY}}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 1.01  & 0.96  & 1.04  & 0.99  & 1.12  & 0.93  & 1.02  & 1.01  & 0.90  & 0.97  & 1.07  & 0.95 \\
+    2     & 0.97  & 0.97  & 1.02  & 0.98  & 1.13  & 0.91  & 0.99  & 1.02  & 0.83  & 1.01  & 1.04  & 0.93 \\
+    3     & 0.93  & 0.90  & 1.01  & 0.99  & 1.10  & 0.85  & 0.99  & 1.02  & 0.81  & 0.94  & 1.02  & 0.95 \\
+    4     & 0.91  & 0.90  & 1.01  & 0.99  & 1.05  & 0.82  & 0.99  & 1.01  & 0.80  & 0.96  & 1.02  & 0.96 \\
+    5     & 0.89  & 0.87  & 1.00  & 0.99  & 1.05  & 0.82  & 0.99  & 1.01  & 0.78  & 0.93  & 1.00  & 0.98 \\
+    6     & 0.87  & 0.84  & 0.99  & 0.99  & 1.04  & 0.82  & 0.99  & 1.00  & 0.77  & 0.83  & 0.99  & 0.99 \\
+    7     & 0.85  & 0.77  & 0.99  & 1.00  & 0.99  & 0.89  & 0.99  & 0.99  & 0.77  & 0.68  & 0.99  & 1.00 \\
+    8     & 0.87  & 0.75  & 0.99  & 1.00  & 0.98  & 0.99  & 0.99  & 1.00  & 0.79  & 0.62  & 1.00  & 1.01 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{\footnotesize{FRANCE}}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 1.00  & 1.02  & 1.04  & 0.96  & 1.04  & 1.01  & 1.06  & 0.99  & 0.96  & 1.03  & 1.00  & 0.94 \\
+    2     & 0.96  & 1.01  & 1.07  & 0.91  & 0.95  & 1.01  & 1.12  & 0.90  & 0.96  & 1.01  & 1.01  & 0.93 \\
+    3     & 0.93  & 1.02  & 1.07  & 0.88  & 0.88  & 1.01  & 1.12  & 0.80  & 0.96  & 1.02  & 1.02  & 0.92 \\
+    4     & 0.91  & 1.01  & 1.05  & 0.85  & 0.83  & 0.99  & 1.09  & 0.72  & 0.97  & 1.01  & 1.05  & 0.92 \\
+    5     & 0.88  & 0.99  & 1.04  & 0.84  & 0.77  & 0.97  & 1.07  & 0.69  & 0.96  & 0.99  & 1.06  & 0.91 \\
+    6     & 0.87  & 0.97  & 1.02  & 0.86  & 0.78  & 0.95  & 1.05  & 0.74  & 0.95  & 0.98  & 1.06  & 0.91 \\
+    7     & 0.88  & 0.97  & 1.01  & 0.89  & 0.81  & 0.95  & 1.05  & 0.83  & 0.94  & 0.97  & 1.03  & 0.91 \\
+    8     & 0.90  & 0.98  & 1.01  & 0.92  & 0.86  & 0.96  & 1.06  & 0.93  & 0.93  & 0.99  & 1.00  & 0.90 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{\footnotesize{ITALY}}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.95  & 1.09  & 1.00  & 1.00  & 0.92  & 1.06  & 1.00  & 1.01  & 0.99  & 1.11  & 1.00  & 0.99 \\
+    2     & 0.99  & 1.04  & 1.00  & 1.01  & 0.95  & 1.06  & 1.00  & 1.02  & 1.05  & 1.04  & 1.00  & 0.98 \\
+    3     & 1.05  & 1.01  & 1.00  & 1.01  & 1.05  & 1.01  & 1.00  & 1.03  & 1.06  & 1.01  & 1.00  & 0.99 \\
+    4     & 1.07  & 1.01  & 0.99  & 1.03  & 1.07  & 1.02  & 1.01  & 1.06  & 1.08  & 1.01  & 0.99  & 0.99 \\
+    5     & 1.06  & 1.01  & 0.99  & 1.02  & 1.04  & 1.00  & 0.99  & 1.05  & 1.08  & 1.01  & 0.99  & 1.00 \\
+    6     & 1.06  & 1.01  & 0.99  & 1.00  & 1.03  & 0.99  & 0.98  & 1.01  & 1.09  & 1.02  & 0.99  & 1.00 \\
+    7     & 1.05  & 1.01  & 0.98  & 1.01  & 1.04  & 0.98  & 0.97  & 1.01  & 1.07  & 1.03  & 0.98  & 1.00 \\
+    8     & 1.04  & 1.02  & 0.98  & 0.99  & 1.01  & 0.98  & 0.95  & 0.98  & 1.06  & 1.04  & 0.98  & 1.00 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{\footnotesize{SPAIN}}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.95  & 1.03  & 1.01  & 1.40  & 0.97  & 1.19  & 1.01  & 1.26  & 0.94  & 0.96  & 1.00  & 1.47 \\
+    2     & 0.88  & 1.04  & 1.01  & 1.61  & 0.94  & 1.23  & 1.02  & 1.46  & 0.87  & 0.98  & 0.99  & 1.66 \\
+    3     & 0.81  & 1.00  & 1.00  & 1.70  & 0.93  & 1.16  & 1.01  & 1.62  & 0.79  & 0.96  & 0.98  & 1.73 \\
+    4     & 0.80  & 0.97  & 1.00  & 1.71  & 0.96  & 1.08  & 1.01  & 1.58  & 0.77  & 0.95  & 0.97  & 1.74 \\
+    5     & 0.80  & 0.97  & 1.00  & 1.73  & 1.05  & 1.04  & 1.01  & 1.57  & 0.76  & 0.96  & 0.96  & 1.77 \\
+    6     & 0.81  & 1.00  & 1.00  & 1.71  & 1.17  & 1.04  & 1.01  & 1.57  & 0.76  & 0.99  & 0.98  & 1.76 \\
+    7     & 0.83  & 1.03  & 1.01  & 1.69  & 1.21  & 1.03  & 1.01  & 1.54  & 0.78  & 1.03  & 1.00  & 1.73 \\
+    8     & 0.85  & 1.04  & 1.01  & 1.66  & 1.21  & 1.06  & 1.01  & 1.45  & 0.79  & 1.03  & 1.01  & 1.71 \\
+    \bottomrule
+    \end{tabular}%
+  \label{uncondp}%
+\end{table}%
+
+
+% Table generated by Excel2LaTeX from sheet 'ToLatex Cond (1)'
+\begin{table}[htbp]
+\small
+  \centering
+  \caption{Theil-U of inflation forecasts conditional on observed path of labor cost}
+    \begin{tabular}{c|cccc|cccc|cccc}
+    \toprule
+    \multicolumn{1}{r}{} & \multicolumn{4}{c}{\textbf{1999Q1-2018Q1}} & \multicolumn{4}{c}{\textbf{1999Q1-2007Q4}} & \multicolumn{4}{c}{\textbf{2008Q1-2018Q1}} \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{GERMANY}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 1.00  & 0.91  & 0.89  & 0.99  & 1.00  & 0.86  & 1.09  & 1.07  & 1.03  & 1.03  & 1.09  & 0.98 \\
+    2     & 0.98  & 0.95  & 0.85  & 0.97  & 0.97  & 0.78  & 1.04  & 1.07  & 1.06  & 1.13  & 1.12  & 0.96 \\
+    3     & 0.96  & 0.95  & 0.82  & 0.94  & 0.94  & 0.72  & 0.94  & 1.11  & 0.98  & 1.15  & 1.08  & 0.85 \\
+    4     & 0.96  & 0.85  & 0.81  & 0.93  & 0.97  & 0.66  & 0.89  & 1.16  & 0.79  & 1.03  & 1.04  & 0.81 \\
+    5     & 0.93  & 0.79  & 0.80  & 0.86  & 0.96  & 0.64  & 0.82  & 1.12  & 0.59  & 0.86  & 0.97  & 0.75 \\
+    6     & 0.89  & 0.77  & 0.82  & 0.79  & 0.94  & 0.62  & 0.81  & 1.07  & 0.49  & 0.83  & 0.93  & 0.72 \\
+    7     & 0.87  & 0.76  & 0.87  & 0.73  & 0.96  & 0.66  & 0.84  & 1.04  & 0.44  & 0.80  & 0.94  & 0.72 \\
+    8     & 0.84  & 0.72  & 0.91  & 0.66  & 0.96  & 0.71  & 0.88  & 0.88  & 0.46  & 0.73  & 0.94  & 0.69 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{FRANCE}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.78  & 0.94  & 0.83  & 0.99  & 0.90  & 0.96  & 0.95  & 1.07  & 0.90  & 0.95  & 0.73  & 0.99 \\
+    2     & 0.75  & 0.88  & 0.78  & 1.00  & 0.88  & 0.93  & 0.98  & 1.07  & 0.86  & 0.84  & 0.63  & 1.01 \\
+    3     & 0.74  & 0.83  & 0.77  & 0.99  & 0.86  & 0.90  & 1.04  & 1.05  & 0.88  & 0.77  & 0.60  & 1.03 \\
+    4     & 0.77  & 0.80  & 0.79  & 0.98  & 0.87  & 0.85  & 1.09  & 1.01  & 0.93  & 0.74  & 0.60  & 1.04 \\
+    5     & 0.83  & 0.80  & 0.86  & 0.97  & 0.96  & 0.83  & 1.17  & 0.98  & 0.96  & 0.75  & 0.63  & 1.05 \\
+    6     & 0.90  & 0.84  & 0.94  & 0.95  & 1.03  & 0.89  & 1.23  & 0.98  & 0.99  & 0.79  & 0.67  & 1.04 \\
+    7     & 0.95  & 0.91  & 0.99  & 0.92  & 1.06  & 0.97  & 1.18  & 0.99  & 1.00  & 0.85  & 0.70  & 1.01 \\
+    8     & 0.99  & 0.94  & 0.99  & 0.88  & 1.03  & 1.00  & 1.11  & 0.99  & 1.01  & 0.88  & 0.70  & 0.96 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{ITALY}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.69  & 0.96  & 0.82  & 0.58  & 0.76  & 0.87  & 0.75  & 0.65  & 0.72  & 0.98  & 0.75  & 0.60 \\
+    2     & 0.73  & 0.89  & 0.84  & 0.69  & 0.78  & 0.71  & 0.76  & 0.72  & 0.79  & 0.89  & 0.71  & 0.79 \\
+    3     & 0.71  & 0.83  & 0.82  & 0.72  & 0.75  & 0.65  & 0.70  & 0.75  & 0.77  & 0.81  & 0.68  & 0.84 \\
+    4     & 0.67  & 0.79  & 0.78  & 0.68  & 0.69  & 0.61  & 0.60  & 0.66  & 0.74  & 0.73  & 0.66  & 0.80 \\
+    5     & 0.71  & 0.76  & 0.79  & 0.73  & 0.71  & 0.62  & 0.64  & 0.67  & 0.76  & 0.67  & 0.69  & 0.86 \\
+    6     & 0.73  & 0.78  & 0.76  & 0.79  & 0.77  & 0.65  & 0.70  & 0.75  & 0.75  & 0.68  & 0.67  & 0.82 \\
+    7     & 0.76  & 0.82  & 0.80  & 0.81  & 0.78  & 0.71  & 0.83  & 0.75  & 0.76  & 0.73  & 0.74  & 0.84 \\
+    8     & 0.77  & 0.84  & 0.97  & 0.82  & 0.76  & 0.75  & 1.23  & 0.74  & 0.77  & 0.75  & 0.93  & 0.84 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{SPAIN}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.96  & 0.93  & 1.03  & 1.05  & 0.80  & 0.87  & 0.95  & 1.25  & 0.82  & 0.94  & 1.16  & 1.24 \\
+    2     & 1.02  & 0.89  & 1.06  & 1.07  & 0.87  & 0.81  & 0.97  & 1.36  & 0.76  & 0.89  & 1.06  & 1.33 \\
+    3     & 0.97  & 0.87  & 1.07  & 1.07  & 0.86  & 0.80  & 0.96  & 1.49  & 0.70  & 0.84  & 1.01  & 1.34 \\
+    4     & 0.99  & 0.88  & 1.07  & 1.07  & 0.86  & 0.83  & 0.98  & 1.55  & 0.69  & 0.82  & 0.99  & 1.31 \\
+    5     & 0.96  & 0.91  & 1.02  & 1.09  & 0.86  & 0.92  & 0.98  & 1.71  & 0.67  & 0.80  & 0.86  & 1.22 \\
+    6     & 0.94  & 0.93  & 0.94  & 1.09  & 0.86  & 1.04  & 0.97  & 1.86  & 0.68  & 0.76  & 0.73  & 1.16 \\
+    7     & 0.95  & 0.93  & 0.87  & 1.09  & 0.90  & 1.09  & 0.96  & 1.89  & 0.73  & 0.73  & 0.67  & 1.06 \\
+    8     & 0.94  & 0.95  & 0.82  & 1.05  & 0.92  & 1.08  & 0.92  & 1.57  & 0.77  & 0.71  & 0.60  & 1.02 \\
+    \bottomrule
+    \end{tabular}%
+  \label{condp}%
+\end{table}%
+
+% Table generated by Excel2LaTeX from sheet 'To Latex uncond (2)'
+\begin{table}[htbp]
+\small
+\centering
+  \caption{Ratio of RMSE of labor cost inflation forecasts of models with to models without price inflation.}
+    \begin{tabular}{c|cccc|cccc|cccc}
+     \midrule
+    \multicolumn{1}{r}{} & \multicolumn{4}{c}{\textbf{1999Q1-2018Q1}} & \multicolumn{4}{c}{\textbf{1999Q1-2007Q4}} & \multicolumn{4}{c}{\textbf{2008Q1-2018Q1}} \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{GERMANY}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 1.04  & 1.06  & 1.04  & 1.01  & 0.96  & 0.90  & 1.04  & 1.04  & 1.07  & 1.08  & 1.03  & 0.98 \\
+    2     & 1.04  & 1.10  & 1.01  & 1.01  & 0.89  & 0.88  & 0.99  & 1.05  & 1.08  & 1.12  & 1.00  & 0.98 \\
+    3     & 1.03  & 1.12  & 0.99  & 1.02  & 0.83  & 0.89  & 0.91  & 1.05  & 1.09  & 1.15  & 0.98  & 1.00 \\
+    4     & 1.03  & 1.09  & 0.96  & 1.01  & 0.85  & 0.93  & 0.81  & 1.04  & 1.08  & 1.11  & 0.95  & 1.00 \\
+    5     & 1.00  & 1.05  & 0.98  & 1.01  & 0.84  & 1.02  & 0.84  & 1.03  & 1.05  & 1.06  & 0.96  & 1.00 \\
+    6     & 0.97  & 1.01  & 1.04  & 1.00  & 0.87  & 1.06  & 0.87  & 1.01  & 0.96  & 1.02  & 1.07  & 1.00 \\
+    7     & 0.96  & 1.00  & 1.02  & 1.00  & 0.91  & 1.07  & 0.82  & 1.00  & 0.84  & 1.00  & 1.15  & 1.01 \\
+    8     & 0.96  & 0.99  & 0.99  & 1.00  & 0.99  & 1.07  & 0.84  & 0.98  & 0.78  & 0.97  & 1.16  & 1.01 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{FRANCE}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 1.00  & 1.01  & 1.00  & 1.02  & 1.01  & 0.99  & 1.00  & 1.02  & 1.00  & 1.01  & 1.00  & 1.02 \\
+    2     & 1.01  & 1.00  & 0.98  & 1.04  & 1.01  & 0.99  & 1.00  & 1.04  & 1.00  & 1.01  & 0.97  & 1.04 \\
+    3     & 1.01  & 0.99  & 0.97  & 1.05  & 1.02  & 0.97  & 0.99  & 1.06  & 1.01  & 1.01  & 0.96  & 1.04 \\
+    4     & 1.01  & 0.97  & 0.97  & 1.06  & 1.01  & 0.96  & 0.99  & 1.07  & 1.01  & 0.99  & 0.95  & 1.05 \\
+    5     & 1.01  & 0.97  & 0.97  & 1.09  & 1.01  & 0.99  & 1.01  & 1.10  & 1.01  & 0.99  & 0.94  & 1.07 \\
+    6     & 1.01  & 1.00  & 0.97  & 1.11  & 1.00  & 1.05  & 1.00  & 1.11  & 1.02  & 1.02  & 0.95  & 1.12 \\
+    7     & 1.01  & 1.02  & 0.97  & 1.12  & 1.00  & 1.10  & 0.99  & 1.10  & 1.04  & 1.05  & 0.96  & 1.17 \\
+    8     & 1.01  & 1.02  & 0.97  & 1.11  & 1.00  & 1.09  & 0.98  & 1.09  & 1.05  & 1.01  & 0.97  & 1.20 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{ITALY}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.98  & 1.04  & 0.93  & 1.15  & 0.96  & 0.93  & 0.93  & 1.12  & 1.05  & 1.10  & 0.92  & 1.26 \\
+    2     & 1.06  & 1.04  & 1.00  & 1.04  & 1.01  & 0.90  & 0.98  & 1.03  & 1.26  & 1.09  & 1.01  & 1.14 \\
+    3     & 1.13  & 1.01  & 1.01  & 0.90  & 1.06  & 0.86  & 0.97  & 0.87  & 1.29  & 1.05  & 1.03  & 0.94 \\
+    4     & 1.11  & 0.98  & 0.99  & 0.88  & 1.04  & 0.88  & 0.90  & 0.86  & 1.30  & 1.01  & 1.03  & 0.93 \\
+    5     & 1.12  & 0.95  & 1.02  & 0.81  & 1.02  & 0.93  & 1.00  & 0.79  & 1.39  & 0.97  & 1.03  & 0.87 \\
+    6     & 1.14  & 0.94  & 0.99  & 0.77  & 1.02  & 1.00  & 0.99  & 0.69  & 1.57  & 0.92  & 0.99  & 0.90 \\
+    7     & 1.15  & 0.96  & 0.96  & 0.81  & 1.07  & 1.08  & 0.93  & 0.77  & 1.51  & 0.89  & 0.96  & 0.89 \\
+    8     & 1.09  & 0.98  & 0.97  & 0.80  & 1.02  & 1.10  & 0.99  & 0.76  & 1.32  & 0.95  & 0.95  & 0.93 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{SPAIN}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.98  & 0.96  & 0.93  & 1.02  & 1.00  & 1.00  & 0.92  & 0.81  & 0.98  & 0.93  & 0.93  & 1.08 \\
+    2     & 0.94  & 0.93  & 0.96  & 1.02  & 0.96  & 0.99  & 0.92  & 0.79  & 0.92  & 0.88  & 0.97  & 1.08 \\
+    3     & 0.92  & 0.90  & 1.00  & 0.97  & 0.96  & 0.99  & 0.93  & 0.71  & 0.90  & 0.83  & 1.02  & 1.02 \\
+    4     & 0.90  & 0.87  & 1.03  & 1.00  & 0.95  & 1.00  & 0.94  & 0.64  & 0.88  & 0.77  & 1.05  & 1.06 \\
+    5     & 0.88  & 0.85  & 1.04  & 1.00  & 0.94  & 1.01  & 0.94  & 0.60  & 0.87  & 0.77  & 1.06  & 1.06 \\
+    6     & 0.89  & 0.84  & 1.05  & 1.00  & 0.95  & 1.00  & 0.94  & 0.60  & 0.88  & 0.78  & 1.08  & 1.05 \\
+    7     & 0.90  & 0.83  & 1.04  & 0.99  & 0.95  & 0.99  & 0.95  & 0.63  & 0.89  & 0.79  & 1.08  & 1.04 \\
+    8     & 0.91  & 0.85  & 1.03  & 0.98  & 0.95  & 0.99  & 0.97  & 0.67  & 0.90  & 0.82  & 1.06  & 1.01 \\
+    \bottomrule
+    \end{tabular}%
+    
+  \label{uncondulc}%
+\end{table}%
+
+% Table generated by Excel2LaTeX from sheet 'To latex Cond (2)'
+\begin{table}[htbp]
+\small
+  \centering
+  \caption{Theil-U of labor cost inflation forecasts conditional on observed path of price inflation}
+    \begin{tabular}{c|cccc|cccc|cccc}
+    \midrule
+    \multicolumn{1}{r}{} & \multicolumn{4}{c}{\textbf{1999Q1-2018Q1}} & \multicolumn{4}{c}{\textbf{1999Q1-2007Q4}} & \multicolumn{4}{c}{\textbf{2008Q1-2018Q1}} \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{GERMANY}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.95  & 0.78  & 1.02  & 0.99  & 1.19  & 0.98  & 1.15  & 1.07  & 0.86  & 0.82  & 0.99  & 0.90 \\
+    2     & 0.95  & 0.78  & 1.02  & 0.98  & 1.22  & 0.92  & 1.16  & 1.06  & 0.85  & 0.83  & 1.01  & 0.93 \\
+    3     & 0.94  & 0.77  & 1.04  & 0.97  & 1.20  & 0.85  & 1.24  & 1.04  & 0.85  & 0.83  & 1.00  & 0.95 \\
+    4     & 0.94  & 0.73  & 1.07  & 0.94  & 1.19  & 0.80  & 1.33  & 0.99  & 0.85  & 0.80  & 0.99  & 0.95 \\
+    5     & 0.94  & 0.72  & 1.08  & 0.95  & 1.18  & 0.76  & 1.47  & 1.00  & 0.84  & 0.78  & 0.97  & 0.98 \\
+    6     & 0.94  & 0.71  & 1.05  & 0.93  & 1.12  & 0.73  & 1.45  & 1.01  & 0.82  & 0.74  & 0.90  & 0.99 \\
+    7     & 0.93  & 0.69  & 1.05  & 0.89  & 1.06  & 0.77  & 1.38  & 0.97  & 0.82  & 0.69  & 0.85  & 0.99 \\
+    8     & 0.92  & 0.70  & 1.07  & 0.85  & 0.98  & 0.79  & 1.32  & 0.87  & 0.91  & 0.69  & 0.81  & 1.02 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{FRANCE}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.92  & 1.00  & 0.88  & 1.02  & 0.93  & 1.03  & 0.94  & 1.00  & 1.00  & 1.00  & 0.87  & 1.12 \\
+    2     & 0.93  & 0.98  & 0.84  & 1.00  & 0.93  & 1.07  & 0.96  & 0.98  & 0.98  & 0.97  & 0.83  & 1.14 \\
+    3     & 0.97  & 0.96  & 0.85  & 0.99  & 0.95  & 1.13  & 0.96  & 0.96  & 1.01  & 0.93  & 0.86  & 1.14 \\
+    4     & 1.01  & 0.92  & 0.86  & 1.01  & 0.95  & 1.14  & 0.99  & 0.97  & 1.04  & 0.89  & 0.90  & 1.12 \\
+    5     & 1.05  & 0.87  & 0.88  & 1.04  & 0.97  & 1.14  & 0.99  & 0.98  & 1.05  & 0.82  & 0.94  & 1.13 \\
+    6     & 1.09  & 0.81  & 0.90  & 1.08  & 0.98  & 1.04  & 1.04  & 1.00  & 1.07  & 0.76  & 0.97  & 1.16 \\
+    7     & 1.11  & 0.80  & 0.92  & 1.11  & 0.98  & 0.95  & 1.07  & 1.00  & 1.10  & 0.83  & 0.98  & 1.26 \\
+    8     & 1.05  & 0.79  & 0.91  & 1.09  & 0.95  & 0.88  & 1.08  & 0.97  & 1.03  & 0.89  & 0.96  & 1.29 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{ITALY}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 0.72  & 0.88  & 1.01  & 0.64  & 0.81  & 0.99  & 1.05  & 0.75  & 0.66  & 0.81  & 0.94  & 0.54 \\
+    2     & 0.79  & 0.83  & 0.91  & 0.80  & 0.87  & 0.90  & 0.96  & 0.86  & 0.79  & 0.76  & 0.81  & 0.90 \\
+    3     & 0.79  & 0.80  & 0.88  & 0.85  & 0.87  & 0.85  & 1.00  & 0.91  & 0.79  & 0.74  & 0.75  & 1.06 \\
+    4     & 0.71  & 0.79  & 0.83  & 0.77  & 0.79  & 0.80  & 0.99  & 0.83  & 0.73  & 0.71  & 0.69  & 0.95 \\
+    5     & 0.74  & 0.80  & 0.79  & 0.84  & 0.81  & 0.77  & 0.89  & 0.89  & 0.75  & 0.70  & 0.65  & 1.38 \\
+    6     & 0.72  & 0.82  & 0.80  & 0.86  & 0.85  & 0.72  & 1.03  & 0.99  & 0.66  & 0.68  & 0.65  & 1.14 \\
+    7     & 0.69  & 0.83  & 0.76  & 0.81  & 0.78  & 0.68  & 1.00  & 0.92  & 0.60  & 0.64  & 0.63  & 1.18 \\
+    8     & 0.70  & 0.83  & 0.76  & 0.86  & 0.80  & 0.68  & 0.88  & 0.95  & 0.57  & 0.67  & 0.65  & 1.11 \\
+    \midrule
+    \multicolumn{1}{c}{} & \multicolumn{12}{c}{\textbf{SPAIN}} \\
+    \midrule
+    steps & total & mfg   & const & serv  & total & mfg   & const & serv  & total & mfg   & const & serv \\
+    \midrule
+    1     & 1.01  & 0.99  & 0.98  & 0.98  & 0.97  & 1.00  & 1.00  & 1.01  & 0.99  & 1.06  & 0.99  & 0.99 \\
+    2     & 1.05  & 0.99  & 0.97  & 0.99  & 1.03  & 1.09  & 1.08  & 1.01  & 1.02  & 1.02  & 0.99  & 0.99 \\
+    3     & 1.04  & 0.94  & 0.92  & 0.99  & 1.11  & 1.04  & 1.05  & 1.02  & 1.01  & 0.94  & 0.98  & 0.99 \\
+    4     & 1.03  & 0.90  & 0.89  & 0.96  & 1.16  & 0.95  & 1.08  & 1.02  & 1.01  & 0.87  & 0.98  & 0.99 \\
+    5     & 1.03  & 0.84  & 0.86  & 0.95  & 1.22  & 0.83  & 1.10  & 1.01  & 0.99  & 0.79  & 0.94  & 0.99 \\
+    6     & 1.01  & 0.82  & 0.82  & 0.94  & 1.21  & 0.77  & 1.11  & 1.00  & 0.95  & 0.70  & 0.89  & 0.98 \\
+    7     & 1.02  & 0.83  & 0.81  & 0.93  & 1.22  & 0.75  & 1.12  & 0.98  & 0.95  & 0.71  & 0.84  & 0.98 \\
+    8     & 1.02  & 0.86  & 0.81  & 0.93  & 1.28  & 0.83  & 1.09  & 0.97  & 0.93  & 0.72  & 0.80  & 0.97 \\
+    \bottomrule
+    \end{tabular}%
+  \label{condulc}%
+\end{table}%
+\clearpage
+
+\pagebreak
+\section{Labor Share Developments}
+\label{AppendixLaborShare}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Labor Share across countries and sectors}\label{fig:LS}
+\includegraphics[scale = .8]{LabourShare.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations based on OECD data.
+\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\clearpage
+\pagebreak
+
+% \section{VAR-based Analysis: Impulse Responses from Choleski Orthogonalization and the Forecast Error Variance Decomposition}
+% \label{AppendixCholeskiCountries}
+
+
+% \begin{figure}[!htbp]
+% \begin{center}
+% \caption{Steady state pass-through from unit labor cost inflation to price inflation}\label{fig:TVP_Choleski}
+% \includegraphics[scale = .45]{Results_CholeskiIRF_All.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Authors' calculations.
+% Note: The results show the steady state impulse response (at quarter 40) from a time varying approach whereby the first sample covered 1985Q1-2008Q1 and thereafter one quarter at a time was recursively added.
+% Sample period: 1985Q1-2018Q1.\par}
+% \end{minipage}
+% \end{center}
+% \end{figure}
+
+% \clearpage
+
+
+
+\section{VAR-based Analysis: Impulse Responses from Choleski Orthogonalization and the Forecast Error Variance Decomposition}
+\label{AppendixCholeskiCountries}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Steady state pass-through from unit labor cost inflation to price inflation}\label{fig:TVP_Choleski}
+\includegraphics[scale = .45]{Results_CholeskiIRF_All.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.
+Note: The results show the steady state impulse response (at quarter 40) from a time varying approach whereby the first sample covered 1985Q1-2008Q1 and thereafter one quarter at a time was recursively added.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\clearpage
+
+% \begin{figure}[!htbp]
+% \begin{center}
+% \caption{Steady state pass-through from a ULC shock to price inflation}\label{fig:TVP_Choleski_BEAR}
+% \includegraphics[scale = .45]{Results_CholeskiIRF_BEAR_All.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Authors' calculations.
+% Note: The results show the steady state impulse response (at quarter 40) from a time varying approach whereby the first sample covered 1985Q1-1995Q1 and thereafter one quarter at a time was recursively added.
+% Sample period: 1985Q1-2018Q1.\par}
+% \end{minipage}
+
+% \end{center}
+% \end{figure}
+
+% \clearpage
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Forecast Error Variance Decomposition (FEVD)}\label{fig:all_choleski_FEVD}
+\includegraphics[scale = .45]{Results_CholeskiIRF_FEVD_All.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.
+Note: The results show the steady state impulse response (at quarter 40) from a time varying approach whereby the first sample covered 1985Q1-2008Q1 and thereafter one quarter at a time was recursively added.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+
+\clearpage
+
+\section{VAR-based Analysis: Impulse Response from Choleski Orthogonalization - implications for the markup}
+\label{AppendixCholeskiMargins}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Choleski decomposition based pass-through from labor cost to price-cost markup}\label{fig:Figure_CholeskiIRF_TotalEconomy_Margins}
+\includegraphics[scale = .72]{Results_CholeskiIRF_TotalEconomy_Margins.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations. The price-cost markup is calculated as the difference between the impulse response of price inflation to a shock to labor cost inflation.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\clearpage
+\pagebreak
+
+\section{VAR-based Analysis: Impulse Responses from Choleski Orthogonalization - Results from Model which includes Monetary Policy}
+\label{AppendixCholeskiCountriesMP}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Steady state pass-through from unit labor cost inflation to price inflation}\label{fig:TVP_Choleski_MP}
+\includegraphics[scale = .45]{Results_CholeskiIRF_All_withMP.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.
+Note: Results from a 4 variable VAR model (which includes real value added, the gross value added deflator, labor cost and monetary pThe results show the steady state impulse response (at quarter 40) from a time varying approach whereby the first sample covered 1985Q1-2008Q1 and thereafter one quarter at a time was recursively added. 
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\clearpage
+
+\section{VAR-based Analysis: Impulse Responses from Choleski Orthogonalization under high versus low inflation}
+\label{AppendixCholeskiCountriesHighLow}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Pass-through from unit labor cost inflation to price inflation for high versus low inflation}\label{fig:all_choleski_highlow}
+\includegraphics[scale = .45]{Results_CholeskiIRF_All_Highlow.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+
+%%%
+% \clearpage
+
+% \section{VAR-based Analysis: Impulse Responses from Choleski Orthogonalization - implications for margins}
+% \label{AppendixCholeskiMargins}
+
+
+% \begin{figure}[!htbp]
+% \begin{center}
+% \caption{Pass-through from unit labor cost inflation to price inflation for high versus low inflation}\label{fig:all_choleski_margins}
+% \includegraphics[scale = .45]{Results_CholeskiIRF_All_Margins.jpg}
+% % trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Authors' calculations.
+% Sample period: 1985Q1-2018Q1.\par}
+% \end{minipage}
+% \end{center}
+% \end{figure}
+
+
+%%%
+\clearpage
+
+
+\section{VAR-based Analysis: Impulse Responses from Choleski Orthogonalization under high and low inflation - implications for margins}
+\label{AppendixCholeskiMarginsRegime_highlow}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Pass-through from unit labor cost inflation to price inflation for high versus low inflation}\label{fig:all_choleski_highlow_margins}
+\includegraphics[scale = .48]{Results_CholeskiIRF_All_HighLowInflation_Margins.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+
+%%%
+\clearpage
+
+
+\section{VAR-based Analysis: Impulse Responses from Choleski Orthogonalization under high versus low inflation - Results from Model which includes Monetary Policy}
+\label{AppendixCholeskiCountriesHighLow_withMP}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{Pass-through from unit labor cost inflation to price inflation for high versus low inflation}\label{fig:all_choleski_highlow_withMP}
+\includegraphics[scale = .45]{Results_CholeskiIRF_All_HighLowInflation_withMP.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+\clearpage
+
+\section{SVAR with sign restrictions: Impulse response functions}
+\label{AppendixSVAR}
+
+\begin{figure}[!htb]
+\begin{center}
+\begin{tabular}{ccc}
+Germany &  & France \\
+&  &  \\
+%Simple benchmark: Choleski &  & Simple benchmark: Choleski \\
+\includegraphics[width=0.55%
+\textwidth]{IRF_DE_Total} &  & %
+\includegraphics[width=0.55%
+\textwidth]{IRF_FR_Total} \\
+\\
+Italy &  & Spain \\
+\includegraphics[width=0.55%
+\textwidth]{IRF_IT_Total} &  & %
+\includegraphics[width=0.55%
+\textwidth]{IRF_ES_Total} \\
+&  &
+\end{tabular}
+\caption{Impulse response functions for the total economy}
+\label{fig: IRFunres}
+%\bigskip
+%\parbox{1\textwidth}{\small Note: ...}
+\end{center}
+\end{figure}
+
+
+\clearpage
+
+
+\section{Sign restricted SVAR: Historical contributions}
+\label{SVARhist}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{The contribution of demand shocks to price and labor cost inflation}\label{fig:SignVAR_Hist_Demand}
+\includegraphics[scale = .65]{Results_SignVAR_HistoricalContr_Dem.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+\begin{center}
+\caption{The contribution of supply shocks to price and labor cost inflation}\label{fig:SignVAR_Hist_Supply}
+\includegraphics[scale = .65]{Results_SignVAR_HistoricalContr_Sup.jpg}
+% trim={<left> <lower> <right> <upper>}
+\begin{minipage}{\textwidth} {\footnotesize
+Sources: Authors' calculations.
+Sample period: 1985Q1-2018Q1.\par}
+\end{minipage}
+\end{center}
+\end{figure}
+
+
+\clearpage
+\section{The derivation of the counterfactual IRFs}
+\label{AppendixCountIRFsFormulas}
+Consider the following VAR(1)\footnote{Lag 1 was selected for illustration purposes, the formulas derived for the counterfactual $IRFs$ also hold in the general VAR(p) case.} :
+\begin{equation}
+A_0Y_{t}=A_1Y_{t-1}+\epsilon_{t}  \quad \forall t=1,...,T \label{eq:model}\\
+\end{equation}
+
+where $Y_{t}$ is the vector of endogenous variables, $A_0$, $A_1$ the matrices of contemporaneous and lag coefficients, respectively and $\epsilon_{t}$ are structural shocks.
+
+\begin{equation}
+Y_{t}=(A_0)^{-1} A_1Y_{t-1}+(A_0)^{-1} \epsilon_{t}
+\end{equation}
+
+\begin{equation}
+Y_{t}=BY_{t-1}+(A_0)^{-1} \epsilon_{t},  B = (A_0)^{-1} A_1
+\end{equation}
+
+A simple way to calculate $IRFs$ is to iterate starting with $t=0$.
+\begin{equation}
+Y_{0}=(A_0)^{-1} \epsilon_{0}
+\end{equation}
+
+\begin{equation}
+Y_{1}=B \cdot (A_0)^{-1} \epsilon_{0} + (A_0)^{-1} \epsilon_{1}
+\end{equation}
+
+\begin{equation}
+Y_{k}=B^k \cdot (A_0)^{-1} \epsilon_{0} + B^{k-1} \cdot (A_0)^{-1} \epsilon_{1} + ... + B \cdot (A_0)^{-1} \epsilon_{k-1} + (A_0)^{-1} \epsilon_{k}
+\end{equation}
+
+\begin{equation}
+Y_{k}= \sum_{h=0}^{k} B^{k-h} \cdot (A_0)^{-1} \epsilon_{h}
+\end{equation}
+
+The $IRF$ of variable $i$ following a certain shock $j$ at period $h$ ($IRF^h_{ij}$) is achieved by setting $\epsilon_{0} = e_j$, where $e_j$ is an identification column vector with 1 on the $j$-th position and zero otherwise.\\ 
+
+We choose variable $i^{\star}$ for which the counterfactual responses to shock $j$ are set to zero.
+
+In order to offset the $IRF$ of variable $i^{\star}$ to shock $j$, we produce a set of counterfactual shocks ($\epsilon_{t}$). We set:
+
+\begin{equation}
+\epsilon_{0} = e_j + \hat{\epsilon_0} \cdot \sum_{l = 1}^n e_l
+\end{equation}
+where $e_l$ is a column vector with 1 on the $l$ position and zero otherwise and $n$ is the number of structural shocks.
+
+At this point we depart from similar approaches. For example, if the VAR is identified using a Choleski framework, the impact of shock $j$ on variable $i^{\star}$ is offset by modifying only the shock corresponding to variable $i^{\star}$ in the recursive identification scheme . As in the sign restriction framework each identified structural shock can impact instantaneously all endogenous variables, in deriving the counterfactual IRFs we assume that all the structural shocks contribute to the offset. One assumption we make in order to ensure determinacy is that the shocks have an equal contribution in off-setting the impact of shock $j$ on variable $i^{\star}$.\footnote{In this approach the combination of structural shocks that is constructed to offset the response of variable $i^{\star}$ to structural shock $j$ also impacts instantaneously all the other variables. This is consistent with assuming the existence of instantaneous effects, but it may be argued that this instantaneous impact contribute to the difference between the unrestricted and the counterfactual $IRFs$. We checked therefore an alternative way of constructing the counterfactual $IRFs$, in which each structural shock can have a different contribution to the offsetting (relaxing the equal weights assumption). The resulting system is identified assuming that the counterfactual shock impacts instantaneously only variable $i^{\star}$. The results are qualitatively similar as in the baseline approach.} 
+
+\begin{equation}
+\epsilon_{1} = \hat{\epsilon_1} \cdot \sum_{l=1}^n e_l
+\end{equation}
+
+\begin{equation}
+\epsilon_{k} = \hat{\epsilon_k} \cdot \sum_{l=1}^n e_l
+\end{equation}
+
+We determine $\hat{\epsilon_0}, \hat{\epsilon_1}, ... \hat{\epsilon_k}$ such that $\hat{IRF^h_{i^\star j}} = 0$ for all periods $h=0,1,...,k$, where $i^\star$ is the variable whose IRF is being shut down.
+
+\begin{equation}
+IRF^h_{ij} = e_i' \cdot Y_h
+\end{equation}
+
+\begin{equation}
+Y_{0}=(A_0)^{-1} e_j + \hat{\epsilon_0} \cdot (A_0)^{-1}\cdot \sum_{l=1}^n e_l
+\end{equation}
+
+The counterfactual $IRF$ of variable $i$ to shock $j$ at the moment 0 is $\hat{IRF^0_{ij}}$:
+
+\begin{equation}
+\hat{IRF^0_{ij}} = e_i' \cdot Y_{0}=  e_i' (A_0)^{-1} e_j + \hat{\epsilon_0} e_i' \cdot (A_0)^{-1}\cdot \sum_{l=1}^n e_l
+\end{equation}
+
+but $e_i' \cdot (A_0)^{-1}\cdot e_l = IRF^0_{il}$, therefore: 
+
+\begin{equation}
+\hat{IRF^0_{ij}} = IRF^0_{ij} + \hat{\epsilon_0} \cdot \sum_{l=1}^n IRF^0_{il}
+\end{equation}
+
+Notation: $IRF^h_{i\Sigma} = \sum_{l=1}^n IRF^h_{il} $ (the sum for the period $h$ of all $IRFs$ of variable $i$ to all other shocks).
+
+\begin{equation}
+\hat{IRF^0_{i^\star j}} = IRF^0_{i^\star j} + \hat{\epsilon_0} \cdot IRF^0_{i^\star \Sigma} = 0
+\end{equation}
+
+\begin{equation}
+\hat{\epsilon_0}  = - \frac{IRF^0_{i^\star j}}{IRF^0_{i^\star \Sigma}}
+\end{equation}
+
+\begin{equation}
+Y_{1}=B \cdot (A_0)^{-1} e_j + \hat{\epsilon_0} \cdot B\cdot (A_0)^{-1}\cdot \sum_{l=1}^n e_l + \hat{\epsilon_1} \cdot (A_0)^{-1}\cdot \sum_{l=1}^n e_l
+\end{equation}
+
+\begin{equation}
+\hat{IRF^1_{ij}} = e_i' \cdot Y_{1} = e_i' \cdot B \cdot (A_0)^{-1} e_j + \hat{\epsilon_0} \cdot e_i' \cdot  B\cdot (A_0)^{-1}\cdot \sum_{l=1}^n e_l + \hat{\epsilon_1} \cdot e_i' \cdot (A_0)^{-1}\cdot \sum_{l=1}^n e_l
+\end{equation}
+
+\begin{equation}
+\hat{IRF^1_{i^\star j}} = IRF^1_{i^\star j} + \hat{\epsilon_0} \cdot \sum_{l=1}^n IRF^1_{i^\star l} + \hat{\epsilon_1} \cdot \sum_{l=1}^n IRF^0_{i^\star l} = 0
+\end{equation}
+
+\begin{equation}
+\hat{\epsilon_1}  = - \frac{IRF^1_{i^\star j}+ \hat{\epsilon_0} \cdot IRF^1_{i^\star \Sigma}}{IRF^0_{i^\star \Sigma}}
+\end{equation}
+
+In general:
+\begin{equation}
+\label{eq.21}
+\hat{IRF^k_{i^\star j}} = IRF^k_{i^\star j} + \hat{\epsilon_0} \cdot IRF^k_{i \Sigma} + \hat{\epsilon_1} \cdot IRF^{k-1}_{i \Sigma} + ... +\hat{\epsilon_{k-1}} \cdot IRF^{1}_{i \Sigma} + \hat{\epsilon_k} \cdot IRF^{0}_{i \Sigma} = 0
+\end{equation}
+
+\begin{equation}
+\hat{\epsilon_k}  = - \frac{IRF^k_{i^\star j}+ \sum_{h=0}^{k-1}\hat{\epsilon_h} \cdot IRF^{k-h}_{i\Sigma}}{IRF^0_{i\bar{j}}}
+\end{equation}
+
+%Note that here there is no condition to prevent the numerator to be zero (one would have to check from application to application).
+
+As shown in equation \ref {eq.21} for the case of $i = i^\star$, for a given variable $i$ the counterfactual $IRF$\footnote{The derivation of counterfactual $IRFs$ follows the same principles when setting the difference between the $IRF$ of wages and of productivity to zero after a structural shock $j$. Additionally, we assume that the two IRFs contribute equally to setting this difference to zero and the weight of shock $j$  is allowed to vary from that of other shocks contributing to the offsetting.} is the following:
+\begin{equation}
+\hat{IRF^k_{ij}} = IRF^k_{ij} + \sum_{h=0}^{k} \hat{\epsilon_h} \cdot IRF^{k-h}_{i\Sigma}
+\end{equation}
+
+\clearpage
+
+
+\section{Unrestricted and counterfactual $IRFs$ in the 2 shock VAR}
+\label{AppendixSVAR2}
+
+\begin{figure}[!htb]
+\begin{center}
+\begin{tabular}{ccc}
+Germany &  & France \\
+&  &  \\
+%Simple benchmark: Choleski &  & Simple benchmark: Choleski \\
+\includegraphics[width=0.4%
+\textwidth]{IRF_DE_Total_2shock} &  & %
+\includegraphics[width=0.4%
+\textwidth]{IRF_FR_Total_2shock} \\
+\\
+Italy &  & Spain \\
+\includegraphics[width=0.4%
+\textwidth]{IRF_IT_Total_2shock} &  & %
+\includegraphics[width=0.4%
+\textwidth]{IRF_ES_Total_2shock} \\
+&  &
+\end{tabular}
+\caption{Impulse response functions for the total economy}
+\label{fig: IRFunres}
+%\bigskip
+%\parbox{1\textwidth}{\small Note: ...}
+\end{center}
+\end{figure}
+
+
+\clearpage
+
+\section{The response of margins after a demand and after a supply shock}
+\label{AppendixMarginsSVAR2}
+
+\begin{figure}[!htb]
+\begin{center}
+\begin{tabular}{ccc}
+Germany &  & France \\
+&  &  \\
+%Simple benchmark: Choleski &  & Simple benchmark: Choleski \\
+\includegraphics[width=0.50%
+\textwidth]{Margins_DE_Total} &  & %
+\includegraphics[width=0.50%
+\textwidth]{Margins_FR_Total} \\
+\\
+Italy &  & Spain \\
+\includegraphics[width=0.50%
+\textwidth]{Margins_IT_Total} &  & %
+\includegraphics[width=0.50%
+\textwidth]{Margins_ES_Total} \\
+&  &
+\end{tabular}
+%\medskip
+\parbox{1\textwidth}{\small Note: The solid red lines mark the instances where labor costs act as an amplification channel for price inflation in a significant manner.}\\
+\caption{The cummulated response of margins for the total economy}
+\label{fig: IRFunres}
+\end{center}
+\end{figure}
+
+
+\clearpage
+
+
+\section{Unrestricted and counterfactual $IRFs$ in the 4 shock VAR}
+\label{AppendixSVAR5}
+
+\begin{figure}[!htb]
+\begin{center}
+\begin{tabular}{ccc}
+Germany &  &  \\
+&  &  \\
+%Simple benchmark: Choleski &  & Simple benchmark: Choleski \\
+\includegraphics[width=0.4%
+\textwidth]{IRF_DE_Total_4shock} &  & %
+\includegraphics[width=0.4%
+\textwidth]{IRF_DE_Total_4shock_L_W} \\
+\\
+France &  &  \\
+\includegraphics[width=0.4%
+\textwidth]{IRF_FR_Total_4shock} &  & %
+\includegraphics[width=0.4%
+\textwidth]{IRF_FR_Total_4shock_L_W} \\
+&  &
+\end{tabular}
+\caption{Impulse response functions for the total economy}
+\label{fig: IRFunres}
+%\bigskip
+%\parbox{1\textwidth}{\small Note: ...}
+\end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{center}
+\begin{tabular}{ccc}
+Italy &  &  \\
+&  &  \\
+%Simple benchmark: Choleski &  & Simple benchmark: Choleski \\
+\includegraphics[width=0.4%
+\textwidth]{IRF_IT_Total_4shock} &  & %
+\includegraphics[width=0.4%
+\textwidth]{IRF_IT_Total_4shock_L_W} \\
+\\
+Spain &  &  \\
+\includegraphics[width=0.4%
+\textwidth]{IRF_ES_Total_4shock} &  & %
+\includegraphics[width=0.4%
+\textwidth]{IRF_ES_Total_4shock_L_W} \\
+&  &
+\end{tabular}
+\caption{Impulse response functions for the total economy}
+\label{fig: IRFunres}
+%\bigskip
+%\parbox{1\textwidth}{\small Note: ...}
+\end{center}
+\end{figure}
+
+\clearpage
+\pagebreak
+
+\section{Results based on a 5 shock VAR}
+\label{AppendixSVAR6}
+
+
+\begin{table}[!h]
+\tiny
+\begin{center}
+\caption{The 5 shock VAR: identification scheme}
+\vskip 0.5cm
+\label{tab: identification2}
+%\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccc}
+\toprule
+\textit{Variables} & \multicolumn{3}{c}{\textit{Shocks}} \\ \\[-1ex]
+& Demand   & Supply & Labor supply & Wage mark-up & Monetary pol & Other \\
+
+Real value added & \textbf{+} & \textbf{+} & \textbf{+} & \textbf{+} & \textbf{+} & $\bullet$ \\
+Prices & \textbf{+} & \textbf{-} & \textbf{-} & \textbf{-} & \textbf{+} & $\bullet$ \\
+Wages & \textbf{+} & \textbf{+} & \textbf{-} & \textbf{-} & \textbf{+} & $\bullet$ \\
+Productivity & \textbf{+} & \textbf{+} & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\
+Unemployment rate & \textbf{-} & $\bullet$ & \textbf{+} & \textbf{-} & \textbf{-} & $\bullet$ \\
+Spread & \textbf{+} & $\bullet$ & $\bullet$ & $\bullet$ & \textbf{-} & $\bullet$ \\
+\end{tabular}
+\end{center}
+\par
+{\small \begin{center}Notes: $\bullet$ = unconstrained, \textbf{+} = positive sign,
+\textbf{--} = negative sign \end{center}}
+\end{table}
+
+
+
+\begin{figure}[!h]
+\begin{center}
+\caption{Amplification of price inflation response due to the labor cost channel in the 5 shock VAR}\label{fig:5ShockVAR_Counterfactual}
+\includegraphics[scale = .65]{Amplification_5shock_VAR.jpg}
+% trim={<left> <lower> <right> <upper>}
+% \begin{minipage}{\textwidth} {\footnotesize
+% Sources: Various sources, authors' calculations.
+% Sample period: 1985Q1-2018Q1.\par}
+% \end{minipage}
+\begin{minipage}{\textwidth} {\footnotesize
+ Note: This chart indicates, in blue, the quarters following a certain shock where the median counterfactual IRF lies outside the 68 percent posterior uncertainty band of the unrestricted IRF. \par}
+ \end{minipage}
+\end{center}
+\end{figure}
+
+\clearpage
+
+
+\end{appendices}
+%background material
+%\textit{On the theoretical link - the cost-push view}\\
+
+%In economic theory, this represents the cost-push view on inflation, which is based on the idea that the primary determinant of higher prices is higher costs. More formally, increases in wages in excess of productivity are seen as to put upward pressure on prices (see \cite{Gordon_88}).\\
+
+
+%\textit{On the theoretical link - alternative views}\\
+
+%Theoretically, an alternative to the popular cost-push view of the inflationary process is that firms will charge whatever the market will bear, regardless of their actual costs. If the market’s acceptance of higher prices is the dominant determinant of inflation, the cost-push model would have less validity (see \cite{Banerji2005}). \\
+%Also, the cost-push view abstracts from any influences that the monetary policy might have on inflation. An alternative view is that inflation is a "monetary phenomenon" and is driven by excess demand. If a central bank is pursuing a contractionary policy trying to keep inflation low, firms might not be able to pass on higher wages into prices. In fact, the causality between prices and wages might go the other way: in case of excess demand, firms would be able to increase prices, which would lead to higher demand for wages.\\ 
+
+%\textit{Why the cost-push view might not work} \\
+
+%Labour costs are estimated to account for only 30-40 per cent of total input costs of euro area firms (see \cite{ECB2004}).
+
+%\textit{Empirical findings}\\
+
+%Empirical studies – mostly focused on US data – have drawn mixed conclusions on the link between labor costs and inflation. Three results stand out: (i) wages and prices have tended to move together, but it appears difficult to ascertain that wages have an \textit{independent} influence on prices; some studies actually find that prices lead wages; (ii) while there is a link between prices and wages in the long-run, their medium to short-run relationship is not so easy to grasp; (iii) there is considerable time variation in the pass-through of wages to prices. 
+
+%In-sample analyses based on Granger causality type of tests tend to favor the idea that price inflation causes wage inflation.
+%\cite{Hu_Toussaint-Comeau_2010} find that wage growth does not cause price inflation in the Granger causality sense, especially after the mid-80s. By contrast,
+%price inflation does Granger cause wage growth. 
+%\cite{Hess_Schweitzer_2000} find that price and wage changes are best predicted by their own lags, meaning that none Granger cause each other.
+%\cite{Mehra_2000} disentangles between the long-run and the short-run relationship between wages and prices. The two variables appear to be cointegrated, but with causality running from prices to wages. In the short run, wages affect prices, but to a small and sample-dependent extent. In periods of low inflation, wages do not help to predict inflation. It is only during a highly inflationary environment that firms pass higher wages into prices, suggesting that causation runs from excess aggregate demand to inflation and wages [too long]. \cite{Banerji2005} approaches this changing relationship from a different angle, looking at cyclical turns. He finds that labor costs lead inflation at peaks, but lag it at troughs, which would make them a lagging indicator of upturns in inflation. 
+
+%Out-of-sample analyses find that wages are not helpful in forecasting inflation (\cite{Stock_Watson_2008},\cite{Knotek_Zaman_2014}).
+
+%Earlier Phillips curve estimations assume that the marginal costs are proportional to real ULC (but here it's real ULC, should we quote them?).
+%\\ 
+
+
+%\textit{Empirical findings - Euro area}\\
+
+%\cite{Dees_Gunter_14} explore the cost-push factors from the supply side in euro area big 4, also by looking at dissagregated sectoral data. Their focus is however different, namely forecasting inflation and analysing spill-overs across sectors and countries. \\
+%Their estimations starts however in 1995, which doesn't allow them to account for structural changes in the relationship between variables. They also do not impose structure
+%\cite{Tatierska_2010} finds by estimating a NKPC that in eight out of 11 euro area countries there is a plausible relationship between inflation and ULC growth. \\
+
+%\textit{Despite some of these empirical challenges, there are plenty of reasons to believe that connections between economic activity, wages, and prices do exist. The benchmark model for price inflation—the New Keynesian Phillips curve posits that price inflation today is a function of expected future price inflation and the current marginal costs of production; by iterating forward, price inflation today depends on current and expected future marginal costs (Galí and Gertler 1999, Sbordone 2002). And marginal costs will generally depend on wages, especially in more labor-intensive industries. So even if price inflation may empirically appear to Granger-cause wages in some circumstances, current and expected future wages and other components of costs may actually be driving the inflation process in theory} - taken from \cite{Knotek_Zaman_2014}. \\
+
+
+%\textit{On the shock dependency}\\
+
+%Can it be that the challenge in empirically grasping the link between wages and prices arises from the fact that the wage pass-through to inflation depends on many things at the same time? E.g. state of the cycle, level of inflation, persistency of inflation, and more fundamentally, nature of shocks.
+
+%We argue that the source of the correlation between wages and prices reflects the mechanisms underlying macro fluctuations. In a NK model, the correlation between wages and prices is different for demand and for supply shocks. 
+
+%We go one step further and argue that the pass-through is not a deep parameter underlying the economy, so it imaginable that it can be driven by all sorts of economic conditions, including different shocks hitting the economy. 
+
+%The idea of the relationship between variables being shock dependent has been recently advocated in the exchange rate empirical literature (see \cite{Forbes_2018}, \cite{Comunale_Kunovac_2017}). 
+
+%The same idea,  but translate to the wage pass-through to inflation, has recently become popular in policy circles. \cite{ECB2018b} presents evidence based on the New Area-Wide Model where the response of the GDP deflator to wages is different for supply shocks (i.e. wage markup shocks) than for demand shocks. The response of price inflation appears to be stronger to demand than to the supply shocks. \\
+% The supply shock captures frictions in the wage setting such as the impact of structural reforms or non-linearities like downward wage rigidity
+
+%There is no comprehensive theoretical literature which focuses on the difference in the wage pass-through to inflation according to different shocks. \cite{Bils_Chang_2000} put forward a theoretical framework in which price rigidity differs with the nature of shocks, with prices being more responsive to increases in costs generated by factor prices than to an increase in marginal costs generated by an expansion of output; model-based results show that prices react more to a technology (supply) shock than to a preference (demand) shock. Although this paper spells out clearly that it's important to disentangle between the nature of the shocks in seeing how prices react, it does not speak precisely to the question we are interested in, related to the wage pass-through to prices.  
+
+%\cite{Gali_99} proposes a framework to evaluate the validity of a theoretical model by looking at its prediction in terms of conditional second moments (i.e. second moments conditional on a given source of fluctuations) and see how it compares to its empirical counterpart. More in detail, he focuses on the employment-productivity relationship; he estimates an SVAR identified using sign restrictions and check the co-movement between the two variables \textit{conditional} on the type of shock. He then argues that a NK model does better in predicting empirical regularities than an RBC model.    
+
+%The shock dependency of the pass-through reflects both prices and wages' degree of stickiness.
+
+%Why would the pass-through of wages to prices be bigger when the economy is hit by a demand versus a supply shock?
+
+%One explanation could be that what we call "supply shock", identified based on the negative comovement between output and prices hides various supply shocks. Imagine 3 supply shock, all of them increase output and reduce prices: a technology/productivity shock increases wages, a negative wage mark-up shock reduces wages, a pozitive labour supply also reduces wages.\\
+
+%This approach also speaks to the time-variation in the pas-through found by some papers.\\
+
+%\textit{On the time variation}\\
+
+%Several papers suggest that the link between labor costs and inflation can differ across time. \cite{Knotek_Zaman_2014} shows how the correlation between wages and prices has decreased since the mid-80s. Also, \cite{Peneva_Rudd_2017} show how the pass-through of labor cost growth to price inflation in the US has declined over the past several decades (to the point where it is currently close to zero). 
+
+% NOTE there is little evidence that movements in average labor cost growth have been an important independent influence on price inflation in recent years.
+
+%Also, as shown by \cite{Daly_Hobijn_2014}, the recent low levels of inflation could change the wage-price nexus because of downward nominal rigidities. \\
+
+
+%\textit{Why sectors matter}\\
+
+%Sectors differ in terms of labour market tighteness and many other labour market characteristics that affect the pass-through of wage growth to price inflation. The cost structure of production firms is different, with services having a bigger share of labour costs (see Figure \ref{fig:Figure_1}). At the same time, manufacturing is subject to a larger degree to international competition, which would in theory force firms to use mark-ups more to off-set the effect of wage increases on selling prices. Furthermore, other characteristics, such as workers' turnover rates, capital intensity or the degree of wage bargaining institutions are also sector dependant. Finally, sectors differ in terms of the degree of wage rigidity. \cite{DuCaju09} show (on a Belgian firm-level data set) that wages is construction are particularly sticky, less so in services and even less in manufacturing. \cite{Tatierska_2010} argues that the sensitivity of inflation to ULC differs across sectors, reflecting the different degree of price stickiness; services sector exhibit stickier prices, so she finds that for most analysed countries (out of 11 euro area countries), ULC Granger causes inflation for the total economy in more instances than for services.
+
+
+%\textit{Despite some of these empirical challenges, there are plenty of reasons to believe that connections between economic activity, wages, and prices do exist. The benchmark model for price inflation—the New Keynesian Phillips curve posits that price inflation today is a function of expected future price inflation and the current marginal costs of production; by iterating forward, price inflation today depends on current and expected future marginal costs (Galí and Gertler 1999, Sbordone 2002). And marginal costs will generally depend on wages, especially in more labor-intensive industries. So even if price inflation may empirically appear to Granger-cause wages in some circumstances, current and expected future wages and other components of costs may actually be driving the inflation process in theory} - taken from \cite{Knotek_Zaman_2014}. \\
+
+
+%\textit{growth of nominal wages may be a poor measure
+%of cost pressures faced by firms, since if wage growth is driven by productivity growth, then firms will not have to pass higher wages on as higher prices. This argument also would require that employers compensate workers for productivity gains; thus, productivity should be accounted for when asking if wages are driven by inflation.} For this reason we look at ULC.\\
+
+
+\clearpage
+
+\newpage
+\bibliographystyle{apalike}
+\bibliography{Pass-through_references}
+\end{document}
